@@ -27,8 +27,14 @@ public class BulletController : MonoBehaviour
         current_pos += transform.forward * bullet_speed * Time.deltaTime;
 
         transform.position = current_pos;
+    }
 
-       
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            Destroy(this.gameObject );
+        }
     }
 }

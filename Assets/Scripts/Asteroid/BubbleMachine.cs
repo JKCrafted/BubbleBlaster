@@ -15,7 +15,9 @@ public class BubbleMachine : MonoBehaviour
         for (int i = 0; i < spawn_bubble_count; i++)
         {
             Vector3 vector3 = new Vector3(Random.Range(-radius, radius), Random.Range(-radius, radius), Random.Range(-radius, radius));
-            Instantiate(Asteroid, vector3, transform.rotation);
+            GameObject bubble = Instantiate(Asteroid, vector3, transform.rotation);
+            bubble.name = "bubble_asteroid_"+i;
+            bubble.transform.parent = transform;
         }
     }
 
