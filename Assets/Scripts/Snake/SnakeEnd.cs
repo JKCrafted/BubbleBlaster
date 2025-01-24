@@ -24,7 +24,7 @@ public class SnakeEnd : MonoBehaviour
 
     IEnumerator MovePos (Vector3 moveTo)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f*Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position, moveTo, 5f);
     }
 }
