@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject pillarPrefab;
+    [SerializeField] private GameObject pillarPrefab;
 
-    public float spawnInterval = 8f;
-    public float startXPosition = 15f;
-    public float yPosition = 0f;
-    public float zPosition = 0f;
+    [SerializeField] private float spawnInterval = 4f;
+    [SerializeField] private float startXPosition = 15f;
+    [SerializeField] private float yPosition = 0f;
+    [SerializeField] private float zPosition = 0f;
 
     private float nextSpawnTime;
 

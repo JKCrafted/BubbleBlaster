@@ -4,8 +4,7 @@ using UnityEngine;
 public class BubbleController : MonoBehaviour
 {
     private Rigidbody rigidbody;
-    public float force;
-
+    [SerializeField] private float force = 5;
 
     private void Start()
     {

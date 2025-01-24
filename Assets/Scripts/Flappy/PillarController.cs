@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PillarController : MonoBehaviour
 {
-    public float speed;
-    public float xBound;
+    [SerializeField] private float speed = 1;
+    [SerializeField] private float xBound = -15;
 
     void Start()
     {
