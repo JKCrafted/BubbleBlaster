@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rigidbody;
 
+
     [SerializeField]
     public float speed = 15f;
 
     public float pitch_speed = 100f;
 
     public float yaw_speed = 100f;
+
+    public GameObject bullet;
 
     Vector3 velocity;
 
@@ -52,6 +55,13 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation *= Quaternion.Euler(pitchDelta, yawDelta, 0);
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // get the position of the gun and spawn a bullet in it
+            GameObject gun = GameObject.FindWithTag("Gun");
+
+            Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+        }
 
     }
 }
