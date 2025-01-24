@@ -1,18 +1,22 @@
 using UnityEngine;
 
-public class AsteroidScriptablew : MonoBehaviour
+public class AsteroidScriptable : MonoBehaviour
 {
 
     private Rigidbody rigidbody;
     public float asteroid_speed = 3f;
     public int children;
     public GameObject childBubbles;
+    private AsteroidGameManager gameManager;
+    public int points = 10;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-
+        gameManager = GameObject.Find("AsteroidGameManager").GetComponent<AsteroidGameManager>();
+        
         // When we spawn the object we want it to go in a random direction
     }
 
@@ -55,10 +59,11 @@ public class AsteroidScriptablew : MonoBehaviour
             child_bubble.name = this.name + i;
             child_bubble.transform.parent = transform.parent;
             child_bubble.transform.localScale = new Vector3 (transform.localScale.x-1, transform.localScale.y-1, transform.localScale.z-1);
-            child_bubble.gameObject.GetComponent<AsteroidScriptablew>().asteroid_speed += 2f;
+            child_bubble.gameObject.GetComponent<AsteroidScriptable>().asteroid_speed += 2f;
 
         }
 
+        gameManager.updateScore(points);
         Destroy(this.gameObject);
 
     }
