@@ -9,6 +9,8 @@ public class AsteroidScriptable : MonoBehaviour
     public GameObject childBubbles;
     private AsteroidGameManager gameManager;
     public int points = 10;
+    public int rotation = 180;
+    public float radius = 150;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,14 +27,25 @@ public class AsteroidScriptable : MonoBehaviour
     {
         Vector3 current_pos = transform.position;
 
-        if (current_pos.x < -75 || current_pos.x > 75 || current_pos.y < -75 || current_pos.y > 75)
-        {
-            // reverse direction of asteroid when it hits the edge of the map
-            // how to change forward direction or do we just rotate object
+        current_pos += transform.forward * asteroid_speed * Time.deltaTime;
 
+        if(current_pos.x > radius) {
+            current_pos.x = -radius;
+        } else if (current_pos.x < -radius) {
+            current_pos.x = radius;
         }
 
-        current_pos += transform.forward * asteroid_speed * Time.deltaTime;
+        if(current_pos.y > radius) {
+            current_pos.y = -radius;
+        } else if (current_pos.y < -radius) {
+            current_pos.y = radius;
+        }
+
+        if(current_pos.z > radius) {
+            current_pos.z = -radius;
+        } else if (current_pos.z < -radius) {
+            current_pos.z = radius;
+        }
 
         transform.position = current_pos;
     }
@@ -55,11 +68,16 @@ public class AsteroidScriptable : MonoBehaviour
             child_pos.x += Random.Range(-1, 1);
             child_pos.y += Random.Range(-1, 1);
 
-            GameObject child_bubble = Instantiate(this.gameObject, child_pos, transform.rotation);
+            Vector3 vector3_rotation = new Vector3(Random.Range(-rotation, rotation), Random.Range(-rotation, rotation), Random.Range(-rotation, rotation));
+            
+            GameObject child_bubble = Instantiate(childBubbles, child_pos, Quaternion.Euler(vector3_rotation));
             child_bubble.name = this.name + i;
             child_bubble.transform.parent = transform.parent;
-            child_bubble.transform.localScale = new Vector3 (transform.localScale.x-1, transform.localScale.y-1, transform.localScale.z-1);
+            child_bubble.transform.localScale = new Vector3 (transform.localScale.x-2, transform.localScale.y-2, transform.localScale.z-2);
             child_bubble.gameObject.GetComponent<AsteroidScriptable>().asteroid_speed += 2f;
+
+            // add force in a random direction to child bubble
+            child_bubble.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0));
 
         }
 
@@ -75,5 +93,10 @@ public class AsteroidScriptable : MonoBehaviour
         {
             explodeAsteroidBubble();
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+
     }
 }

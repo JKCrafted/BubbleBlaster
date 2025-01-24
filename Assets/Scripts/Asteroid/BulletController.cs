@@ -5,6 +5,7 @@ public class BulletController : MonoBehaviour
 
     [SerializeField]
     float bullet_speed = 10f;
+    public float radius = 150;
 
     Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +20,7 @@ public class BulletController : MonoBehaviour
 
         Vector3 current_pos = transform.position;
 
-        if (current_pos.x < -75 || current_pos.x > 75 || current_pos.y < -75 || current_pos.y > 75)
+        if (current_pos.x < -radius || current_pos.x > radius || current_pos.y < -radius || current_pos.y > radius)
         {
             Destroy(this.gameObject);
         }
