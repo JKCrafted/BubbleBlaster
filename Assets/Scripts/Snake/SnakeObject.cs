@@ -23,8 +23,32 @@ public class SnakeObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Old");
+        Debug.Log(rb.linearVelocity);
+        transform.rotation = Quaternion.identity;
+
         if (running)
         {
+            if (rb.linearVelocity.x > 5)
+            {
+                Vector3 newVelocity = rb.linearVelocity;
+                newVelocity.x = 5;
+                rb.linearVelocity = newVelocity;
+            }
+            if (rb.linearVelocity.y > 5)
+            {
+                Vector3 newVelocity = rb.linearVelocity;
+                newVelocity.y = 5;
+                rb.linearVelocity = newVelocity;
+            }
+            if (rb.linearVelocity.z > 5)
+            {
+                Vector3 newVelocity = rb.linearVelocity;
+                newVelocity.z = 5;
+                rb.linearVelocity = newVelocity;
+            }
+            Debug.Log("New");
+            Debug.Log(rb.linearVelocity);
             if (Input.GetKeyDown(KeyCode.W)) 
             {
                 rb.AddForce(Vector3.forward * speed);
@@ -40,6 +64,24 @@ public class SnakeObject : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 rb.AddForce(Vector3.right * speed);
+            }
+            if (rb.linearVelocity.x < 1 && !(rb.linearVelocity.x < 0) || rb.linearVelocity.x > -1 && !(rb.linearVelocity.x > 0))
+            {
+                Vector3 newVelocity = rb.linearVelocity;
+                newVelocity.x = 0;
+                rb.linearVelocity = newVelocity;
+            }
+            if (rb.linearVelocity.y < 1 && !(rb.linearVelocity.y < 0) || rb.linearVelocity.y > -1 && !(rb.linearVelocity.y > 0))
+            {
+                Vector3 newVelocity = rb.linearVelocity;
+                newVelocity.y = 0;
+                rb.linearVelocity = newVelocity;
+            }
+            if (rb.linearVelocity.z < 1 && !(rb.linearVelocity.z < 0) || rb.linearVelocity.z > -1 && !(rb.linearVelocity.z > 0))
+            {
+                Vector3 newVelocity = rb.linearVelocity;
+                newVelocity.z = 0;
+                rb.linearVelocity = newVelocity;
             }
         }
 
@@ -63,6 +105,7 @@ public class SnakeObject : MonoBehaviour
 
     private void GrowSnake(GameObject consumed)
     {
+        rb.linearVelocity = Vector3.zero;
         Destroy(consumed);
         Vector3 spawnPos = gameManager.snake[gameManager.snake.Count-1].transform.position;
         spawnPos.y += 1;
