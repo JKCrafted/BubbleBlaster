@@ -47,7 +47,11 @@ public class AsteroidScriptablew : MonoBehaviour
 
         for (int i = 0; i < children; i++)
         {
-            GameObject child_bubble = Instantiate(this.gameObject, transform.position, transform.rotation);
+            Vector3 child_pos = transform.position;
+            child_pos.x += Random.Range(-1, 1);
+            child_pos.y += Random.Range(-1, 1);
+
+            GameObject child_bubble = Instantiate(this.gameObject, child_pos, transform.rotation);
             child_bubble.name = this.name + i;
             child_bubble.transform.parent = transform.parent;
             child_bubble.transform.localScale = new Vector3 (transform.localScale.x-1, transform.localScale.y-1, transform.localScale.z-1);
