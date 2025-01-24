@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 15f;
     public float pitch_speed = 100f;
     public float yaw_speed = 100f;
+    public float radius = 150;
 
     public GameObject bullet;
 
@@ -25,6 +26,11 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement();
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject gun = GameObject.FindWithTag("Gun");
+            Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -47,37 +53,37 @@ public class PlayerController : MonoBehaviour
         float hor_input = Input.GetAxis("Horizontal");
         float ver_input = Input.GetAxis("Vertical");
 
-        //Debug.Log("Vertical" + ver_input);
-        //Debug.Log("Horizontal" + hor_input);
-
         Vector3 current_pos = transform.position;
 
         current_pos += transform.forward * speed * Time.deltaTime;
-        //current_pos += (transform.right * hor_input) * speed * Time.deltaTime;
-        //current_pos += (transform.up * ver_input) * speed * Time.deltaTime;
+        current_pos += (transform.right * hor_input) * speed * Time.deltaTime;
+        current_pos += (transform.up * ver_input) * speed * Time.deltaTime;
+
+        if(current_pos.x > radius) {
+            current_pos.x = -radius;
+        } else if (current_pos.x < -radius) {
+            current_pos.x = radius;
+        }
+
+        if(current_pos.y > radius) {
+            current_pos.y = -radius;
+        } else if (current_pos.y < -radius) {
+            current_pos.y = radius;
+        }
+
+        if(current_pos.z > radius) {
+            current_pos.z = -radius;
+        } else if (current_pos.z < -radius) {
+            current_pos.z = radius;
+        }
 
         transform.position = current_pos;
-
-        Vector3 rotation = transform.rotation.eulerAngles;
-
-        //rotation.x += ver_input * speed * Time.deltaTime;
-
-        //transform.rotation = Quaternion.Euler(rotation);
-
-        //rotation.y += hor_input * turning_speed * Time.deltaTime;
-        //transform.rotation = Quaternion.Euler(rotation);
 
         float pitchDelta = ver_input * pitch_speed * Time.deltaTime;
         float yawDelta = hor_input * yaw_speed * Time.deltaTime;
 
         transform.rotation *= Quaternion.Euler(pitchDelta, yawDelta, 0);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // get the position of the gun and spawn a bullet in it
-            GameObject gun = GameObject.FindWithTag("Gun");
-
-            Instantiate(bullet, gun.transform.position, gun.transform.rotation);
-        }
+        
     }
 }
