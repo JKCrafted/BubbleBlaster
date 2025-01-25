@@ -1,6 +1,10 @@
 namespace BubbleWubble
 {
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
+    using UnityEngine.UI;
 
     /// <summary>
     /// The portal into the minigames from the HUB.
@@ -10,6 +14,8 @@ namespace BubbleWubble
         [SerializeField]
         [Tooltip("Scene ID from build hierarchy")]
         private int sceneToLoad;
+        [SerializeField] Color color;
+        public GameObject fade;
 
         /// <summary>
         /// When the player collides with us, switch the scene!
@@ -21,10 +27,28 @@ namespace BubbleWubble
             {
                 if (BubbleGame.Instance != null)
                 {
-                    BubbleGame.Instance.SwitchScene(sceneToLoad);
+                    StartCoroutine(LoadingScene(color, 1.5f));
+                    
                 }
             }
         }
+        IEnumerator LoadingScene(Color colour, float speed)
+        {
+            GameObject newFade = Instantiate(fade);
+            FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
+            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
+            fadeEffect.fadingSpeed = speed;
+            yield return new WaitForSeconds(speed+0.1f);
+            BubbleGame.Instance.SwitchScene(sceneToLoad);
+        }
+
+        //IEnumerator SceneTransition()
+        //{
+
+        //     yield return new WaitForSeconds(1);
+        // }
+
+
     }
 }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace BubbleWubble
 {
@@ -13,6 +14,8 @@ namespace BubbleWubble
         private TextMeshProUGUI score;
         private TextMeshProUGUI replay;
         public bool winThreshold = false;
+        public GameObject fade;
+        public Color color = Color.white;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -55,17 +58,26 @@ namespace BubbleWubble
             Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
 
             Cursor.visible = false;
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(LoadingScene(SceneManager.GetActiveScene().name, color, 1.5f));
         }
-
         public void ReplayNo()
         {
             Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
 
             Cursor.visible = false;
-
-            BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold);
+            StartCoroutine(LoadingScene("scene_hub", Color.white, 1.5f));
         }
+
+        IEnumerator LoadingScene(string input, Color colour, float speed)
+        {
+            GameObject newFade = Instantiate(fade);
+            FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
+            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
+            fadeEffect.fadingSpeed = speed;
+            yield return new WaitForSeconds(speed+0.1f);
+            SceneManager.LoadScene(input);
+        }
+
 
 
         // Update is called once per frame
