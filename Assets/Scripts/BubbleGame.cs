@@ -42,6 +42,7 @@ namespace BubbleWubble
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
                 SceneManager.LoadScene(0);
+                characterRef.gameObject.SetActive(true); 
             }
         }
 
@@ -64,12 +65,25 @@ namespace BubbleWubble
         public void ShowHideEscapeMenu(bool isShown)
         {
             characterRef.enabled = !isShown;
+            Cursor.lockState = isShown ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = isShown;
             escapeMenu.gameObject.SetActive(isShown);
         }
 
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        public void SwitchScene(int sceneID)
+        {
+            if (sceneID > 0)
+            {
+                characterRef.gameObject.SetActive(false);
+            }
+
+            SceneManager.LoadScene(sceneID);
         }
     }
 }

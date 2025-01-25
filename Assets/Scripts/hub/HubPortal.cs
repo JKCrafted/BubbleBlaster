@@ -11,7 +11,10 @@ public class HubPortal : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            SceneManager.LoadScene(sceneToLoad);
+            if (BubbleWubble.BubbleGame.Instance != null)
+            {
+                BubbleWubble.BubbleGame.Instance.SwitchScene(sceneToLoad);
+            }
         }
     }
 }
