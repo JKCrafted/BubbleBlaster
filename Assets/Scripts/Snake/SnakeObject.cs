@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Snake
 {
     public class SnakeObject : MonoBehaviour
     {
+        private TextMeshProUGUI scoreText;
+        private int score = 0;
         private GameManager gameManager;
         public GameObject snakeEnd;
         private Rigidbody rb;
@@ -20,6 +24,8 @@ namespace Snake
             gameManager = FindObjectOfType<GameManager>();
             spawnApple = FindObjectOfType<SpawnApple>();
             rb = GetComponent<Rigidbody>();
+            scoreText = FindObjectOfType<TextMeshProUGUI>();
+            scoreText.text = "Score: " + score.ToString();
         }
 
         // Update is called once per frame
@@ -108,6 +114,8 @@ namespace Snake
         private void GrowSnake(GameObject consumed)
         {
             rb.linearVelocity = Vector3.zero;
+            score++;
+            scoreText.text = "Score: " + score.ToString();
             Destroy(consumed);
             Vector3 spawnPos = gameManager.snake[gameManager.snake.Count - 1].transform.position;
             spawnPos.y += 1;
@@ -117,7 +125,7 @@ namespace Snake
         }
         private void GameEnd()
         {
-            if (wallHits > 20)
+            if (wallHits > 8)
             {
                 running = false;
                 for (int i = 1; i < gameManager.snake.Count; i++)
@@ -141,7 +149,7 @@ namespace Snake
         }
         private IEnumerator DestroySnake(int time, GameObject item)
         {
-            yield return new WaitForSeconds(2f * time);
+            yield return new WaitForSeconds(0.5f * time);
             Destroy(item);
         }
     }
