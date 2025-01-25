@@ -12,6 +12,7 @@ namespace Flappy
         [SerializeField] private float yPosition = 0f;
         [SerializeField] private float zPosition = 0f;
 
+
         private float nextSpawnTime;
 
         private void Start()

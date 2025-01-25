@@ -11,6 +11,7 @@ namespace Snake
         public bool runEnd = false;
         public int score;
         private EndState endState;
+        public int passingScore;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -24,7 +25,7 @@ namespace Snake
         {
             if (runEnd && snake.Count == 0)
             {
-                if (score >= 15)
+                if (score >= passingScore)
                 {
                     endState.winThreshold = true;
                 }

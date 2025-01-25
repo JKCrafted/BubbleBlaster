@@ -13,7 +13,6 @@ namespace BubbleWubble
         private TextMeshProUGUI score;
         private TextMeshProUGUI replay;
         public bool winThreshold = false;
-        public List<GameObject> list = new List<GameObject>();
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -53,10 +52,16 @@ namespace BubbleWubble
 
         public void ReplayYes()
         {
+            Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         public void ReplayNo()
         {
+            Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = false;
             SceneManager.LoadScene("scene_hub");
         }
 
@@ -78,6 +83,9 @@ namespace BubbleWubble
             ending.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(2f);
+            Cursor.lockState = true ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = true;
             replay.gameObject.SetActive(true);
 
         }
