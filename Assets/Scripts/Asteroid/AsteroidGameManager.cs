@@ -1,3 +1,4 @@
+using BubbleWubble;
 using UnityEngine;
 
 namespace Asteriod
@@ -9,11 +10,15 @@ namespace Asteriod
         public float gameTime = 60f; // Set the game time to 60 seconds
         public GameObject timer_ui; // UI element to display when the player wins
         public int shields = 1;
+        private EndState endState;
+
         public GameObject shield_ui;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            endState = FindObjectOfType<EndState>();
+
             updateScore(0);
         }
 
@@ -71,9 +76,14 @@ namespace Asteriod
             if (isGameOver())
             {
                 Debug.Log("YOU WIN!");
+                endState.winThreshold = true;
+                endState.GameEnd();
                 // Add any additional win logic here
-            } else {
+            }
+            else {
                 Debug.Log("YOU LOSE!");
+                endState.winThreshold = false;
+                endState.GameEnd();
                 // Add any additional lose logic here
             }
         }
@@ -107,7 +117,7 @@ namespace Asteriod
         }
 
         public bool isGameOver() {
-            if (shields < 0 && player_score > 50 && gameTime <= 0) {
+            if (shields > 0 && player_score > 50) {
                 return true;
             } else {
                 return false;

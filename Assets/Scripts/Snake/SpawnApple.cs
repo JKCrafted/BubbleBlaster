@@ -12,7 +12,7 @@ namespace Snake
         }
         public void SpawnAppleRun()
         {
-            spawnPosition = new Vector3(Random.Range(-11.5f, 11.5f), 1f, Random.Range(-5f, 5f));
+            spawnPosition = new Vector3(Random.Range(-9.5f, 9.5f), 1f, Random.Range(-5f, 5f));
             Instantiate(apple, spawnPosition, Quaternion.identity);
         }
     }

@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 namespace Asteriod
@@ -28,6 +27,7 @@ namespace Asteriod
                 GameObject bubble = Instantiate(Asteroid, vector3_position, Quaternion.Euler(vector3_rotation));
                 bubble.name = "bubble_asteroid_" + i;
                 bubble.transform.parent = transform;
+                
             }
         }
 
