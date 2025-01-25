@@ -576,6 +576,18 @@ PrefabInstance:
       propertyPath: 'dialogueStrings.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3772290194931847059, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: minigameCutscenes._serializedList.Array.data[0].Value
+      value: cs_flappyfinished
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772290194931847059, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: minigameCutscenes._serializedList.Array.data[1].Value
+      value: cs_snakefinished
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772290194931847059, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: minigameCutscenes._serializedList.Array.data[2].Value
+      value: cs_asteroidsfinished
+      objectReference: {fileID: 0}
     - target: {fileID: 4089040694346991307, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
       propertyPath: m_IsActive
       value: 0

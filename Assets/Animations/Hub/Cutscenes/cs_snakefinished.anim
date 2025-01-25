@@ -297,7 +297,14 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: WriteText
-    data: Some sample text
+    data: So you beat snake... WROOONG
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: RestorePlayerCam
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
