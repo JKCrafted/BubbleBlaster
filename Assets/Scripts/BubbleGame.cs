@@ -1,7 +1,5 @@
 namespace BubbleWubble
 {
-    using NUnit.Framework;
-    using SUPERCharacter;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.SceneManagement;

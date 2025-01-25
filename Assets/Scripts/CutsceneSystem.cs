@@ -57,12 +57,20 @@ namespace BubbleWubble
         {
             if (!cutscenePlaying)
             {
-                BubbleGame.Instance.GetHubCharacter().gameObject.SetActive(false);
-
                 cutsceneAnimator.Play(cutsceneID);
 
                 cutscenePlaying = true;
             }
+        }
+
+        public void DisablePlayerControl()
+        {
+            BubbleGame.Instance.GetHubCharacter().SetInControl(false);
+        }
+
+        public void DisablePlayerCamera()
+        {
+            BubbleGame.Instance.GetHubCharacter().gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -72,6 +80,11 @@ namespace BubbleWubble
         {
             cutscenePlaying = false;
             BubbleGame.Instance.GetHubCharacter().gameObject.SetActive(true);
+        }
+
+        public void RestorePlayerControl()
+        {
+            BubbleGame.Instance.GetHubCharacter().SetInControl(true);
         }
 
         /// <summary>

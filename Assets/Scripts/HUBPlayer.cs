@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,8 +18,9 @@ public class HUBPlayer : MonoBehaviour
     [SerializeField]
     private bool invertLook = false;
 
-    private float sprintModifier = 3.0f;
+    private float sprintModifier = 2.0f;
 
+    [SerializeField]
     private float moveSpeed = 1f;
 
     private Vector2 lookInputs = Vector2.zero;
@@ -37,6 +37,7 @@ public class HUBPlayer : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        playerCam.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     
     public void SetInControl(bool inControl)
@@ -60,15 +61,19 @@ public class HUBPlayer : MonoBehaviour
 
             camRotation.x += (invertLook == true ? lookInputs.y : -lookInputs.y ) * lookSensitivity * Time.deltaTime;
 
-
-            //camRotation.x = Mathf.Clamp(camRotation.x, -camExtents, camExtents);
-
             playerCam.transform.rotation = Quaternion.Euler(camRotation);
 
-            Vector3 forwardMotion = transform.forward * moveInputs.y * (isSprinting == true ? moveSpeed * sprintModifier : moveSpeed);
-            Vector3 strafeMotion = transform.right * moveInputs.x * moveSpeed;
-            characterController.Move((forwardMotion + strafeMotion) * Time.deltaTime);
+            Vector3 forwardMotion = transform.forward * moveInputs.y * moveSpeed;
 
+            Vector3 strafeMotion = transform.right * moveInputs.x * moveSpeed;
+
+            if (isSprinting)
+            {
+                forwardMotion *= sprintModifier;
+                strafeMotion *= sprintModifier;
+            }
+
+            characterController.Move((forwardMotion + strafeMotion) * Time.deltaTime);
         }
     }
 

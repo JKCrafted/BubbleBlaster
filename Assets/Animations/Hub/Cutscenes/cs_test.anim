@@ -1178,6 +1178,20 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: DisablePlayerCamera
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: DisablePlayerControl
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 4.016667
     functionName: WriteText
     data: 'Cone Head: You''re TRAPPED here... Unless you CONQUER my three BUBBLE
@@ -1196,6 +1210,20 @@ AnimationClip:
     messageOptions: 0
   - time: 7.5
     functionName: RestorePlayerCam
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 7.5
+    functionName: RestorePlayerCam
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 7.5
+    functionName: RestorePlayerControl
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

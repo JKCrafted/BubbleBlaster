@@ -53,7 +53,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358605686668918414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -181,11 +181,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc1fa29851728b4c900b242142a0bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivity: 14
+  lookSensitivity: 15
   characterController: {fileID: 7192247446246613787}
   playerCam: {fileID: 3995462389012426153}
   camExtents: 90
   invertLook: 0
+  moveSpeed: 4
 --- !u!1 &6818605979792483107
 GameObject:
   m_ObjectHideFlags: 0
