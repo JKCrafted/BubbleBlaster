@@ -4,7 +4,10 @@ using UnityEngine;
 public class PortalManager : MonoBehaviour
 {
     [SerializeField]
-    AYellowpaper.SerializedCollections.SerializedDictionary<BubbleGame.MinigameType, GameObject> minigamePortals;
+    private AYellowpaper.SerializedCollections.SerializedDictionary<BubbleGame.MinigameType, GameObject> minigamePortals;
+
+    [SerializeField]
+    private CutsceneSystem cutsceneSystem;
 
     /// <summary>
     /// Unity Start()
@@ -21,6 +24,8 @@ public class PortalManager : MonoBehaviour
                 if (minigamePortals.ContainsKey(minigame.Key))
                 {
                     minigamePortals[minigame.Key].gameObject.SetActive(false);
+
+                    cutsceneSystem.PlayMinigameFinishedCutscene(minigame.Key);
                 }
             }
         }
