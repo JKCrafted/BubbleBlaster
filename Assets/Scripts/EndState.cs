@@ -1,31 +1,85 @@
 using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EndState : MonoBehaviour
+namespace BubbleWubble
 {
-    private TextMeshProUGUI ending;
-    private TextMeshProUGUI score;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class EndState : MonoBehaviour
     {
-        foreach(TextMeshProUGUI item in FindObjectsOfType<TextMeshProUGUI>())
+        private TextMeshProUGUI ending;
+        private TextMeshProUGUI score;
+        private TextMeshProUGUI replay;
+        public bool winThreshold = false;
+        public List<GameObject> list = new List<GameObject>();
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            if (item.gameObject.name.Contains("Score"))
+
+            Debug.Log("Running");
+            for (int i = 0; i < transform.childCount; i++)
             {
-                score = item;
+                Debug.Log(i);
+                GameObject item = transform.GetChild(i).gameObject;
+                if (item.tag.Contains("EndingScore"))
+                {
+                    score = item.GetComponent<TextMeshProUGUI>();
+                }
+                else if (transform.GetChild(i).gameObject.tag.Contains("EndingEnding"))
+                {
+                    ending = item.GetComponent<TextMeshProUGUI>();
+                }
+                else if (transform.GetChild(i).gameObject.tag.Contains("EndingReplay"))
+                {
+                    replay = item.GetComponent<TextMeshProUGUI>();
+                }
             }
-            else if (item.gameObject.name.Contains("Ending"))
-            {
-                ending = item;
-            }
+
+
+
+            //score = GameObject.FindWithTag("EndingScore").GetComponent<TextMeshProUGUI>();
+           // ending = GameObject.FindWithTag("EndingEnding").GetComponent<TextMeshProUGUI>();
+            //replay = GameObject.FindWithTag("EndingReplay").GetComponent<TextMeshProUGUI>();
+
         }
 
-    }
+        public void GameEnd()
+        {
 
-    // Update is called once per frame
-    void GameEnd()
-    {
-        
+            StartCoroutine(GameEndCoroutine());
+        }
+
+        public void ReplayYes()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        public void ReplayNo()
+        {
+            SceneManager.LoadScene("scene_hub");
+        }
+
+
+        // Update is called once per frame
+        IEnumerator GameEndCoroutine()
+        {
+            if (winThreshold)
+            {
+                ending.text = "You earned a key!";
+            }
+            else
+            {
+                ending.text = "";
+            }
+            ending.gameObject.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            score.gameObject.SetActive(false);
+            ending.gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(2f);
+            replay.gameObject.SetActive(true);
+
+        }
     }
 }

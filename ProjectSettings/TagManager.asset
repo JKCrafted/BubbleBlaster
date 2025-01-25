@@ -8,6 +8,10 @@ TagManager:
   - Gun
   - Asteroid
   - Bullet
+  - Pillar
+  - EndingScore
+  - EndingEnding
+  - EndingReplay
   layers:
   - Default
   - TransparentFX
