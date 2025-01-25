@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
+      name: 03pvmatt2
+    second: {fileID: 2800000, guid: 21aa13f843b4b544a804dbe2d9d40395, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
       name: stepstop
-    second: {fileID: 2800000, guid: 4207c1e7a811b8a46b2fabcbf066ae35, type: 3}
+    second: {fileID: 2800000, guid: ce017ebe99132d44ea30e91724549bd0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tileable8d
+    second: {fileID: 2800000, guid: b109bea27e18eeb46ad17a5d347c62c7, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
