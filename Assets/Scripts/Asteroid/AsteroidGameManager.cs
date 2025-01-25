@@ -107,7 +107,7 @@ namespace Asteriod
         }
 
         public bool isGameOver() {
-            if (shields < 0 && player_score > 50 && gameTime <= 0) {
+            if (shields > 0 && player_score > 50) {
                 return true;
             } else {
                 return false;
