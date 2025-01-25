@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Snake
 {
@@ -6,6 +7,8 @@ namespace Snake
     {
         [SerializeField] private GameObject apple;
         private Vector3 spawnPosition;
+
+
         private void Start()
         {
             SpawnAppleRun();
@@ -13,7 +16,8 @@ namespace Snake
         public void SpawnAppleRun()
         {
             spawnPosition = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(-5.5f, 5.5f));
-            Instantiate(apple, spawnPosition, Quaternion.identity);
+            GameObject newApple = Instantiate(apple, spawnPosition, Quaternion.identity);
+            newApple.GetComponent<AudioSource>().Play();
         }
     }
 }
