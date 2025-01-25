@@ -9,7 +9,7 @@ public class FlappyGameManager : MonoBehaviour
     [SerializeField] private GameObject scoreUI;
     public float pillarSpeed = 1f;
     private EndState endState;
-    public int passingScore = 10;
+    public int passingScore = 50;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
