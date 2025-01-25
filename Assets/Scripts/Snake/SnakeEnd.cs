@@ -10,12 +10,11 @@ namespace Snake
         private GameObject snakeHead;
         private GameManager gameManager;
         private int index;
-        float timer = 0;
         //Vector3 moveTo;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            gameManager = FindObjectOfType<GameManager>();
+            gameManager = FindFirstObjectByType<GameManager>();
             index = gameManager.snake.Count - 1;
             //float timer = 0;
 

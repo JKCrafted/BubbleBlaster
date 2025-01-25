@@ -21,10 +21,10 @@ namespace Snake
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            gameManager = FindObjectOfType<GameManager>();
-            spawnApple = FindObjectOfType<SpawnApple>();
+            gameManager = FindFirstObjectByType<GameManager>();
+            spawnApple = FindFirstObjectByType<SpawnApple>();
             rb = GetComponent<Rigidbody>();
-            scoreText = FindObjectOfType<TextMeshProUGUI>();
+            scoreText = FindFirstObjectByType<TextMeshProUGUI>();
             scoreText.text = "Score: " + score.ToString();
         }
 
@@ -125,6 +125,7 @@ namespace Snake
         }
         private void GameEnd()
         {
+            StartCoroutine(TakeHit());
             if (wallHits > 8)
             {
                 running = false;
@@ -147,9 +148,40 @@ namespace Snake
 
 
         }
+
+        private IEnumerator TakeHit()
+        {
+            for (int i = 0;i < gameManager.snake.Count;i++)
+            {
+                if (i == 0)
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[2];
+                }
+                else
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[3];
+                }
+            }
+            yield return new WaitForSeconds(3.5f*Time.deltaTime);
+            for (int i = 0; i < gameManager.snake.Count; i++)
+            {
+                if (i == 0)
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[0];
+                }
+                else
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[1];
+                }
+            }
+        }
+
         private IEnumerator DestroySnake(int time, GameObject item)
         {
+            gameManager.runEnd = true;
+            gameManager.score = score;
             yield return new WaitForSeconds(0.5f * time);
+            gameManager.snake.Remove(item);
             Destroy(item);
         }
     }

@@ -14,6 +14,8 @@ namespace Asteriod
         public int rotation = 180;
         public float radius = 150;
 
+        public Material[] material_mats;
+
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -68,31 +70,40 @@ namespace Asteriod
             // else spawn children objects and destroy.. do we spawn these in a seperate controller?
 
             // if we are size 1, then we dont spawn children
-            if (transform.localScale.x == 1)
+            if (children <= 1)
             {
                 Destroy(this.gameObject);
+                return;
             }
 
             for (int i = 0; i < children; i++)
             {
-                Vector3 child_pos = transform.position;
-                child_pos.x += Random.Range(-1, 1);
-                child_pos.y += Random.Range(-1, 1);
-
+                Vector3 child_pos = transform.position + new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0);
                 Vector3 vector3_rotation = new Vector3(Random.Range(-rotation, rotation), Random.Range(-rotation, rotation), Random.Range(-rotation, rotation));
 
                 GameObject child_bubble = Instantiate(childBubbles, child_pos, Quaternion.Euler(vector3_rotation));
                 child_bubble.name = this.name + i;
                 child_bubble.transform.parent = transform.parent;
-                child_bubble.transform.localScale = new Vector3(transform.localScale.x - 2, transform.localScale.y - 2, transform.localScale.z - 2);
-                child_bubble.gameObject.GetComponent<AsteroidScriptable>().asteroid_speed += 2f;
+                child_bubble.transform.localScale = transform.localScale - new Vector3(2, 2, 2);
 
-                // add force in a random direction to child bubble
-                child_bubble.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0));
+                AsteroidScriptable child_script = child_bubble.GetComponent<AsteroidScriptable>();
+                child_script.asteroid_speed += 2f; // Increase speed as it gets smaller
+                child_script.children = children - 1; // reduce the number of children compared to the parent.
 
+                Rigidbody child_rigidbody = child_bubble.GetComponent<Rigidbody>();
+                child_rigidbody.AddForce(new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0) * 100);
+
+                MeshRenderer child_renderer = child_bubble.GetComponent<MeshRenderer>();
+                child_renderer.material = material_mats[0];
             }
 
-            gameManager.updateScore(points);
+            if (gameManager != null) {
+                gameManager.updateScore(points);
+            } else {
+                gameManager = GameObject.Find("AsteroidGameManager").GetComponent<AsteroidGameManager>();
+                gameManager.updateScore(points);
+            }
+
             Destroy(this.gameObject);
 
         }
@@ -106,9 +117,5 @@ namespace Asteriod
             }
         }
 
-        private void OnCollisionExit(Collision collision)
-        {
-
-        }
     }
 }

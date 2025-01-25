@@ -29,8 +29,15 @@ namespace BubbleWubble
         /// </summary>
         private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
         /// <summary>
@@ -95,6 +102,15 @@ namespace BubbleWubble
             }
 
             SceneManager.LoadScene(sceneID);
+        }
+
+        /// <summary>
+        /// Get a reference to the hub player character.
+        /// </summary>
+        /// <returns>Ref to hub player character</returns>
+        public SUPERCharacterAIO GetHubCharacter()
+        {
+            return characterRef;
         }
     }
 }

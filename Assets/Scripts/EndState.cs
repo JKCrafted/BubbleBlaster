@@ -1,31 +1,107 @@
 using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class EndState : MonoBehaviour
+namespace BubbleWubble
 {
-    private TextMeshProUGUI ending;
-    private TextMeshProUGUI score;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class EndState : MonoBehaviour
     {
-        foreach(TextMeshProUGUI item in FindObjectsOfType<TextMeshProUGUI>())
+        private TextMeshProUGUI ending;
+        private TextMeshProUGUI score;
+        private TextMeshProUGUI replay;
+        public bool winThreshold = false;
+        public GameObject fade;
+        public Color color = Color.white;
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            if (item.gameObject.name.Contains("Score"))
+
+            Debug.Log("Running");
+            for (int i = 0; i < transform.childCount; i++)
             {
-                score = item;
+                Debug.Log(i);
+                GameObject item = transform.GetChild(i).gameObject;
+                if (item.tag.Contains("EndingScore"))
+                {
+                    score = item.GetComponent<TextMeshProUGUI>();
+                }
+                else if (transform.GetChild(i).gameObject.tag.Contains("EndingEnding"))
+                {
+                    ending = item.GetComponent<TextMeshProUGUI>();
+                }
+                else if (transform.GetChild(i).gameObject.tag.Contains("EndingReplay"))
+                {
+                    replay = item.GetComponent<TextMeshProUGUI>();
+                }
             }
-            else if (item.gameObject.name.Contains("Ending"))
-            {
-                ending = item;
-            }
+
+
+
+            //score = GameObject.FindWithTag("EndingScore").GetComponent<TextMeshProUGUI>();
+           // ending = GameObject.FindWithTag("EndingEnding").GetComponent<TextMeshProUGUI>();
+            //replay = GameObject.FindWithTag("EndingReplay").GetComponent<TextMeshProUGUI>();
+
         }
 
-    }
+        public void GameEnd()
+        {
 
-    // Update is called once per frame
-    void GameEnd()
-    {
-        
+            StartCoroutine(GameEndCoroutine());
+        }
+
+        public void ReplayYes()
+        {
+            Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = false;
+            StartCoroutine(LoadingScene(SceneManager.GetActiveScene().name, color, 1.5f));
+        }
+        public void ReplayNo()
+        {
+            Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = false;
+            StartCoroutine(LoadingScene("scene_hub", Color.white, 1.5f));
+        }
+
+        IEnumerator LoadingScene(string input, Color colour, float speed)
+        {
+            GameObject newFade = Instantiate(fade);
+            FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
+            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
+            fadeEffect.fadingSpeed = speed;
+            yield return new WaitForSeconds(speed+0.1f);
+            SceneManager.LoadScene(input);
+        }
+
+
+
+        // Update is called once per frame
+        IEnumerator GameEndCoroutine()
+        {
+            if (winThreshold)
+            {
+                ending.text = "You earned a key!";
+            }
+            else
+            {
+                ending.text = "";
+            }
+            ending.gameObject.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            score.gameObject.SetActive(false);
+            ending.gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(2f);
+            Cursor.lockState = true ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+            Cursor.visible = true;
+            replay.gameObject.SetActive(true);
+
+        }
     }
 }

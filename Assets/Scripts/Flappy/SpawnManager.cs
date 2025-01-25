@@ -8,9 +8,7 @@ namespace Flappy
         [SerializeField] private GameObject pillarPrefab;
 
         [SerializeField] public float spawnInterval = 4f;
-        [SerializeField] private float startXPosition = 15f;
-        [SerializeField] private float yPosition = 0f;
-        [SerializeField] private float zPosition = 0f;
+
 
         private float nextSpawnTime;
 
