@@ -103,6 +103,15 @@ namespace BubbleWubble
 
             SceneManager.LoadScene(sceneID);
         }
+
+        /// <summary>
+        /// Get a reference to the hub player character.
+        /// </summary>
+        /// <returns>Ref to hub player character</returns>
+        public SUPERCharacterAIO GetHubCharacter()
+        {
+            return characterRef;
+        }
     }
 }
 

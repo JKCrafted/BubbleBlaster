@@ -11,10 +11,6 @@ namespace BubbleWubble
         [Tooltip("Animator that controls the cutscenes.")]
         private Animator cutsceneAnimator;
 
-        [SerializeField]
-        [Tooltip("A ref to the hub player object.")]
-        private GameObject playerObject;
-
         /// <summary>
         /// Is a cutscene playing right now?
         /// </summary>
@@ -28,7 +24,7 @@ namespace BubbleWubble
         {
             if (!cutscenePlaying)
             {
-                playerObject.gameObject.SetActive(false);
+                BubbleGame.Instance.GetHubCharacter().gameObject.SetActive(false);
 
                 cutsceneAnimator.Play(cutsceneID);
 
@@ -42,7 +38,7 @@ namespace BubbleWubble
         public void RestorePlayerCam()
         {
             cutscenePlaying = false;
-            playerObject.gameObject.SetActive(true);
+            BubbleGame.Instance.GetHubCharacter().gameObject.SetActive(true);
         }
     }
 }
