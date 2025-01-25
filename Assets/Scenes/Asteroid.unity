@@ -971,6 +971,7 @@ MonoBehaviour:
   gameTime: 60
   timer_ui: {fileID: 0}
   shields: 1
+  enemyShip: {fileID: 5858120571149944846, guid: d58d3c88a1576964cb5523cb4094c13b, type: 3}
   shield_ui: {fileID: 0}
 --- !u!4 &2107313325
 Transform:
