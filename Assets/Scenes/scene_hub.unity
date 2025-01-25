@@ -552,6 +552,7 @@ Transform:
   - {fileID: 1607270785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &532661654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -746,6 +747,8 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+=======
+>>>>>>> Stashed changes
 --- !u!1 &621731247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2003,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
+<<<<<<< Updated upstream
 --- !u!1 &1179183804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2113,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+=======
+--- !u!1001 &1208337149
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525869365830551434, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272953680513878395, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_Name
+      value: '[CutsceneSystem]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663627440718125663, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40d27ba94bcd054408b9f0f80e02ab62, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &1351287767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2887,30 @@ Transform:
   - {fileID: 368732409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &1703018402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703018400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b42960c67b6a2408ca105af7bd80f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigamePortals:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 940492422}
+    - Key: 1
+      Value: {fileID: 1385710296}
+    - Key: 2
+      Value: {fileID: 1485813190}
+  cutsceneSystem: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1 &1703992944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2867,7 +2958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8376a80d55372428ba7418b4133a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneSystem: {fileID: 532661655}
+  cutsceneSystem: {fileID: 0}
   escapeMenu: {fileID: 322491978}
   characterRef: {fileID: 6817638361513424864}
 --- !u!1 &1779236446
@@ -3524,7 +3615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &6817638361513424867
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3820,7 +3911,12 @@ SceneRoots:
   - {fileID: 417298165}
   - {fileID: 1159745723}
   - {fileID: 5789999938436511641}
+<<<<<<< Updated upstream
   - {fileID: 532661654}
   - {fileID: 960127741}
   - {fileID: 1179183808}
   - {fileID: 2067602878774241481}
+=======
+  - {fileID: 1208337149}
+  - {fileID: 1903643881}
+>>>>>>> Stashed changes
