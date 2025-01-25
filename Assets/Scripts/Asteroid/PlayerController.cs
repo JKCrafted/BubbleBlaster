@@ -63,6 +63,16 @@ namespace Asteriod
                 gameManager.takeDamage(1);
                 StartCoroutine(Shake(3, 0.2f));
             }
+            if(collision.gameObject.tag == "EnemyShip")
+            {
+                gameManager.takeDamage(1);
+                StartCoroutine(Shake(3, 0.2f));
+            }
+            if(collision.gameObject.tag == "EnemyShipBullet")
+            {
+                gameManager.takeDamage(1);
+                StartCoroutine(Shake(3, 0.2f));
+            }
         }
 
         public void playerMovement()
