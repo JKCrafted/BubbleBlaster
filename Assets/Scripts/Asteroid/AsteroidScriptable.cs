@@ -86,17 +86,14 @@ namespace Asteriod
                 GameObject child_bubble = Instantiate(childBubbles, child_pos, Quaternion.Euler(vector3_rotation));
                 child_bubble.name = this.name + i;
                 child_bubble.transform.parent = transform.parent;
-                if((transform.localScale.x -2) < 1) {
-                    child_bubble.transform.localScale = new Vector3(1, 1, 1);
-                } else {
-                    child_bubble.transform.localScale = new Vector3(transform.localScale.x - 2, transform.localScale.y - 2, transform.localScale.z - 2);
-                }
-                child_bubble.gameObject.GetComponent<AsteroidScriptable>().asteroid_speed += 2f;
+                child_bubble.transform.localScale = new Vector3(transform.localScale.x - 2, transform.localScale.y - 2, transform.localScale.z - 2);
+                
+                child_bubble.GetComponent<AsteroidScriptable>().asteroid_speed += 2f;
 
                 // add force in a random direction to child bubble
                 child_bubble.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0));
                 // reduce number of child in child bubble
-                child_bubble.gameObject.GetComponent<AsteroidScriptable>().children -= 1;
+                child_bubble.GetComponent<AsteroidScriptable>().children = children - 1;
 
                 // assign mesh render material to mat_asteroidbub
                 child_bubble.GetComponent<MeshRenderer>().material = material_mats[0];
