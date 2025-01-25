@@ -49,7 +49,8 @@ namespace Asteriod
             }
 
             if (gameTime > 1 && gameTime <= 30 && enemyShipSpawned == false) {
-                Instantiate(enemyShip, new Vector3(300, 50, 50), Quaternion.identity);
+                
+                Instantiate(enemyShip, new Vector3(150, 50, 50), Quaternion.identity);
                 enemyShipSpawned = true;
             }
 
