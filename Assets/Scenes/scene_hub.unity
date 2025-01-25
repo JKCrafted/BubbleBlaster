@@ -714,10 +714,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1614136065}
-  - {fileID: 764334680}
-  - {fileID: 1607270785}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &532661654
@@ -1278,7 +1275,7 @@ GameObject:
   - component: {fileID: 764334682}
   - component: {fileID: 764334681}
   m_Layer: 0
-  m_Name: Point Light (1)
+  m_Name: GreenPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1292,12 +1289,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764334679}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.84000015, y: 4.14, z: 18.14}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.031805955, y: 0.89454335, z: 0.027830116}
+  m_LocalScale: {x: 0.1987874, y: 0.1987874, z: 0.1987874}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 417298165}
+  m_Father: {fileID: 1385710297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &764334681
 MonoBehaviour:
@@ -1510,7 +1507,8 @@ Transform:
   m_LocalPosition: {x: 15, y: -0.36, z: 10}
   m_LocalScale: {x: 5.0305, y: 5.0305, z: 5.0305}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1607270785}
   m_Father: {fileID: 1703018401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &940492424
@@ -2758,7 +2756,8 @@ Transform:
   m_LocalPosition: {x: 1, y: -0.36, z: 18}
   m_LocalScale: {x: 5.0305, y: 5.0305, z: 5.0305}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 764334680}
   m_Father: {fileID: 1703018401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1385710298
@@ -2910,7 +2909,8 @@ Transform:
   m_LocalPosition: {x: -13, y: -0.36, z: 10}
   m_LocalScale: {x: 5.0305, y: 5.0305, z: 5.0305}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1614136065}
   m_Father: {fileID: 1703018401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1485813192
@@ -3344,7 +3344,7 @@ GameObject:
   - component: {fileID: 1607270787}
   - component: {fileID: 1607270786}
   m_Layer: 0
-  m_Name: Point Light (2)
+  m_Name: YellowPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3358,12 +3358,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607270784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.84, y: 4.14, z: 10.139999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.031805955, y: 0.89454335, z: 0.027830116}
+  m_LocalScale: {x: 0.1987874, y: 0.1987874, z: 0.1987874}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 417298165}
+  m_Father: {fileID: 940492423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1607270786
 MonoBehaviour:
@@ -3465,7 +3465,7 @@ GameObject:
   - component: {fileID: 1614136067}
   - component: {fileID: 1614136066}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: RedPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3479,12 +3479,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614136064}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.16, y: 4.14, z: 8.48}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.031805955, y: 0.89454335, z: -0.30215696}
+  m_LocalScale: {x: 0.1987874, y: 0.1987874, z: 0.1987874}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 417298165}
+  m_Father: {fileID: 1485813191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1614136066
 MonoBehaviour:
