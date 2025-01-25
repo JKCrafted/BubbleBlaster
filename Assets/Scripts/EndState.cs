@@ -49,7 +49,7 @@ namespace BubbleWubble
 
         public void GameEnd()
         {
-
+            Debug.Log("Game Over1!");
             StartCoroutine(GameEndCoroutine());
         }
 

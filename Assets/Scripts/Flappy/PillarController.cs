@@ -23,7 +23,7 @@ namespace Flappy
         private void Update()
         {
             pillarSpeed = gameManager.pillarSpeed;
-            Debug.Log(pillarSpeed);
+            // Debug.Log(pillarSpeed);
             this.transform.position -= Vector3.right * pillarSpeed * Time.deltaTime;
 
             if (this.transform.position.x < xBound)
@@ -35,7 +35,7 @@ namespace Flappy
         private void Randomise()
         {
             int randomIndex = Random.Range(1, 8); // Randomly pick a block between 1 and 8
-            Debug.Log(randomIndex);
+            // Debug.Log(randomIndex);
 
             float emptySpacePosition = 0f;
             if (randomIndex == 1)
@@ -94,7 +94,7 @@ namespace Flappy
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Collided with pillar!");
+            // Debug.Log("Collided with pillar!");
             gameManager.GameOver();
         }
 
