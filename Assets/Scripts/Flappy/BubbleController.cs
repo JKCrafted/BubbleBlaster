@@ -23,7 +23,9 @@ public class BubbleController : MonoBehaviour
     private void Flap()
     {
         rigidbody.linearVelocity = Vector3.zero;
-        rigidbody.AddForce(Vector3.up * force * Time.deltaTime);
+        Vector3 current_pos = transform.position;
+        current_pos += transform.up * force * Time.deltaTime;
+        transform.position = current_pos;
     }
 
     private void OnCollisionEnter(Collision collision)
