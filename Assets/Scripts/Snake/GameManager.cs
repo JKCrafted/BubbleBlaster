@@ -12,6 +12,7 @@ namespace Snake
         public int score;
         private EndState endState;
         public int passingScore;
+        public List<Material> snakeMaterials = new List<Material>();
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {

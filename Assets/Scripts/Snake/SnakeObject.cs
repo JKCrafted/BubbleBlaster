@@ -125,6 +125,7 @@ namespace Snake
         }
         private void GameEnd()
         {
+            StartCoroutine(TakeHit());
             if (wallHits > 8)
             {
                 running = false;
@@ -147,6 +148,34 @@ namespace Snake
 
 
         }
+
+        private IEnumerator TakeHit()
+        {
+            for (int i = 0;i < gameManager.snake.Count;i++)
+            {
+                if (i == 0)
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[2];
+                }
+                else
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[3];
+                }
+            }
+            yield return new WaitForSeconds(3.5f*Time.deltaTime);
+            for (int i = 0; i < gameManager.snake.Count; i++)
+            {
+                if (i == 0)
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[0];
+                }
+                else
+                {
+                    gameManager.snake[i].GetComponent<MeshRenderer>().material = gameManager.snakeMaterials[1];
+                }
+            }
+        }
+
         private IEnumerator DestroySnake(int time, GameObject item)
         {
             gameManager.runEnd = true;
