@@ -37,9 +37,11 @@ namespace BubbleWubble
         private SUPERCharacterAIO characterRef;
 
         /// <summary>
-        /// Track what minigames we've completed? 
+        /// Track what minigames we've tried/completed.
         /// </summary>
-        private Dictionary<MinigameType, bool> completedMinigames;
+        private Dictionary<MinigameType, bool> attemptedMinigames = new Dictionary<MinigameType, bool>();
+
+        private Vector3 playerInitialPos;
 
         /// <summary>
         /// Awake, set up instance and make this not die when scene changes.
@@ -55,6 +57,9 @@ namespace BubbleWubble
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
+
+            playerInitialPos = characterRef.transform.position;
+
         }
 
         /// <summary>
@@ -67,7 +72,19 @@ namespace BubbleWubble
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
                 SceneManager.LoadScene(0);
-                characterRef.gameObject.SetActive(true); 
+                characterRef.gameObject.SetActive(true);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                if (!attemptedMinigames.ContainsKey(fromMinigame))
+                {
+                    attemptedMinigames.Add(fromMinigame, success);
+                }
+                else
+                {
+                    attemptedMinigames[fromMinigame] = success;
+                }
             }
         }
 
@@ -117,6 +134,7 @@ namespace BubbleWubble
             if (sceneID > 0)
             {
                 characterRef.gameObject.SetActive(false);
+                characterRef.transform.position = playerInitialPos;
             }
 
             SceneManager.LoadScene(sceneID);
@@ -135,9 +153,9 @@ namespace BubbleWubble
         /// Get a dictionary of completed minigames.
         /// </summary>
         /// <returns>Dictionary of <Minigame, Completed></returns>
-        public Dictionary<MinigameType, bool> GetCompletedMinigames()
+        public Dictionary<MinigameType, bool> GetAttemptedMinigames()
         {
-            return completedMinigames;
+            return attemptedMinigames;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace BubbleWubble
 
         private void Start()
         {
-            var completedGames = BubbleGame.Instance.GetCompletedMinigames();
+            var completedGames = BubbleGame.Instance.GetAttemptedMinigames();
         }
     }
 }

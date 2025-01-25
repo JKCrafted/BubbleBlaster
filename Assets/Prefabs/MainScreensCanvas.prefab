@@ -387,7 +387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winThreshold: 0
-  list: []
+  fade: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5020618359250002125
 GameObject:
   m_ObjectHideFlags: 0
