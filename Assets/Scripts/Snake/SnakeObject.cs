@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SocialPlatforms.Impl;
 
 namespace Snake
@@ -17,8 +18,14 @@ namespace Snake
         private SpawnApple spawnApple;
         bool running = true;
         [SerializeField] private float speed = 100f;
+        public AudioSource audioSource;
+        //[SerializeField] private AudioClip bubbleForm;
+        [SerializeField] private AudioClip bubblePop;
 
         private int wallHits = 0;
+
+        [SerializeField] List<AudioClip> snakeEat = new List<AudioClip>();
+        [SerializeField] private AudioClip moveNoise;
 
         [SerializeField]
         private int maxHits = 1;
@@ -31,6 +38,9 @@ namespace Snake
             rb = GetComponent<Rigidbody>();
             scoreText = FindFirstObjectByType<TextMeshProUGUI>();
             scoreText.text = "Score: " + score.ToString();
+            running = false;
+            StartCoroutine(TitleScreen());
+            audioSource = GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
@@ -42,7 +52,13 @@ namespace Snake
 
             if (running)
             {
-                if (rb.linearVelocity.x > 5)
+                if (rb.linearVelocity.x > 0 || rb.linearVelocity.y > 0 || rb.linearVelocity.z > 0)
+                {
+                    audioSource.clip = moveNoise;
+                    audioSource.Play();
+                }
+
+                    if (rb.linearVelocity.x > 5)
                 {
                     Vector3 newVelocity = rb.linearVelocity;
                     newVelocity.x = 5;
@@ -118,12 +134,15 @@ namespace Snake
 
         private void GrowSnake(GameObject consumed)
         {
+            //audioSource.clip = ;
+            audioSource.PlayOneShot(snakeEat[Random.RandomRange(0, snakeEat.Count)]);
             rb.linearVelocity = Vector3.zero;
             score++;
             scoreText.text = "Score: " + score.ToString();
             Destroy(consumed);
             Vector3 spawnPos = gameManager.snake[gameManager.snake.Count - 1].transform.position;
             spawnPos.y += 1;
+            //audioSource.PlayOneShot(bubbleForm);
             GameObject newSnakeEnd = Instantiate(snakeEnd, spawnPos, Quaternion.identity);
             gameManager.snake.Add(newSnakeEnd);
             spawnApple.SpawnAppleRun();
@@ -186,8 +205,16 @@ namespace Snake
             gameManager.runEnd = true;
             gameManager.score = score;
             yield return new WaitForSeconds(0.5f * time);
+            audioSource.clip = bubblePop;
+            audioSource.Play();
             gameManager.snake.Remove(item);
             Destroy(item);
+        }
+
+        private IEnumerator TitleScreen()
+        {
+            yield return new WaitForSeconds(5f);
+            running = true;
         }
     }
 }
