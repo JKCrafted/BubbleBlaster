@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using BubbleWubble;
+using static Unity.Collections.Unicode;
 
 namespace Snake
 {
@@ -31,6 +32,7 @@ namespace Snake
                     endState.winThreshold = true;
                 }
                 endState.GameEnd();
+                runEnd = false;
             }
         }
 
