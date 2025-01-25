@@ -54,6 +54,9 @@ namespace Asteriod
             if (shield_ui != null) {
                 shield_ui.GetComponent<TMPro.TextMeshProUGUI>().text = "Shields: " + shields;
             }
+            
+            checkWinCondition();
+
         }
 
         public void updateScore(int score)

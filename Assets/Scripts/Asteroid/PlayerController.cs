@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 namespace Asteriod
 {
@@ -35,11 +36,32 @@ namespace Asteriod
             }
         }
 
+        public IEnumerator Shake(float duration, float magnitude)
+        {
+            Vector3 startPosition = transform.position;
+            float elapsed = 0f;
+    
+            while (elapsed < duration)
+            {
+                float shakeX = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+                float shakeY = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+    
+                transform.position = Vector3.Slerp(new Vector3(startPosition.x, startPosition.y, startPosition.z),
+                    new Vector3(startPosition.x + shakeX, startPosition.y + shakeY, startPosition.z), 0.2f);
+                elapsed += Time.deltaTime;
+    
+                yield return null;
+            }
+    
+            transform.position = startPosition;
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "Asteroid")
             {
                 gameManager.takeDamage(1);
+                StartCoroutine(Shake(3, 0.2f));
             }
         }
 
