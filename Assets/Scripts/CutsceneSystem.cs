@@ -1,5 +1,6 @@
 namespace BubbleWubble
 {
+    using TMPro;
     using UnityEngine;
     
     /// <summary>
@@ -10,6 +11,10 @@ namespace BubbleWubble
         [SerializeField]
         [Tooltip("Animator that controls the cutscenes.")]
         private Animator cutsceneAnimator;
+
+        [SerializeField]
+        [Tooltip("The box for showing dialogue text.")]
+        private TextMeshProUGUI dialogueBox;
 
         /// <summary>
         /// Is a cutscene playing right now?
@@ -39,6 +44,18 @@ namespace BubbleWubble
         {
             cutscenePlaying = false;
             BubbleGame.Instance.GetHubCharacter().gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Write text to the cutscene dialogue box.
+        /// </summary>
+        /// <param name="txt">String to write.</param>
+        public void WriteText(string txt)
+        {
+            if (dialogueBox != null)
+            {
+                dialogueBox.SetText(txt);
+            }
         }
     }
 }

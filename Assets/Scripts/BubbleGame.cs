@@ -1,6 +1,8 @@
 namespace BubbleWubble
 {
+    using NUnit.Framework;
     using SUPERCharacter;
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.SceneManagement;
 
@@ -14,6 +16,16 @@ namespace BubbleWubble
         /// </summary>
         public static BubbleGame Instance;
 
+        /// <summary>
+        /// The type of minigame.
+        /// </summary>
+        public enum MinigameType
+        {
+            Flappy,
+            Snake,
+            Asteroids
+        }
+
         [SerializeField]
         [Tooltip("A ref to the HUB scene's custscene system")]
         private CutsceneSystem cutsceneSystem;
@@ -23,6 +35,13 @@ namespace BubbleWubble
 
         [SerializeField]
         private SUPERCharacterAIO characterRef;
+
+        /// <summary>
+        /// Track what minigames we've tried/completed.
+        /// </summary>
+        private Dictionary<MinigameType, bool> attemptedMinigames = new Dictionary<MinigameType, bool>();
+
+        private Vector3 playerInitialPos;
 
         /// <summary>
         /// Awake, set up instance and make this not die when scene changes.
@@ -38,18 +57,34 @@ namespace BubbleWubble
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
+
+            playerInitialPos = characterRef.transform.position;
+
         }
 
         /// <summary>
         /// Return to the hub world from a subworld.
         /// </summary>
+        /// <param name="fromMinigame">What minigame are we coming from?</param>
         /// <param name="success">Did you win your minigame?</param>
-        public void ReturnToHub(bool success = false)
+        public void ReturnToHub(MinigameType fromMinigame, bool success = false)
         {
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
                 SceneManager.LoadScene(0);
-                characterRef.gameObject.SetActive(true); 
+                characterRef.gameObject.SetActive(true);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                if (!attemptedMinigames.ContainsKey(fromMinigame))
+                {
+                    attemptedMinigames.Add(fromMinigame, success);
+                }
+                else
+                {
+                    attemptedMinigames[fromMinigame] = success;
+                }
             }
         }
 
@@ -99,6 +134,7 @@ namespace BubbleWubble
             if (sceneID > 0)
             {
                 characterRef.gameObject.SetActive(false);
+                characterRef.transform.position = playerInitialPos;
             }
 
             SceneManager.LoadScene(sceneID);
@@ -111,6 +147,15 @@ namespace BubbleWubble
         public SUPERCharacterAIO GetHubCharacter()
         {
             return characterRef;
+        }
+
+        /// <summary>
+        /// Get a dictionary of completed minigames.
+        /// </summary>
+        /// <returns>Dictionary of <Minigame, Completed></returns>
+        public Dictionary<MinigameType, bool> GetAttemptedMinigames()
+        {
+            return attemptedMinigames;
         }
     }
 }

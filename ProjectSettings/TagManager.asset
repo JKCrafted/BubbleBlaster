@@ -12,6 +12,9 @@ TagManager:
   - EndingScore
   - EndingEnding
   - EndingReplay
+  - EnemyShip
+  - EnemyShipBullet
+  - EnemyShipGun
   layers:
   - Default
   - TransparentFX

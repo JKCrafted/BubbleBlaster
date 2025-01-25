@@ -71,11 +71,22 @@ namespace BubbleWubble
         IEnumerator LoadingScene(string input, Color colour, float speed)
         {
             GameObject newFade = Instantiate(fade);
-            FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
+            newFade.transform.SetParent(transform);
+            FadeEffect fadeEffect = newFade.GetComponent<FadeEffect>();
             fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
             fadeEffect.fadingSpeed = speed;
             yield return new WaitForSeconds(speed+0.1f);
-            SceneManager.LoadScene(input);
+            if (input == "scene_hub")
+            {
+                if (SceneManager.GetActiveScene().name.Contains("Snake")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold); }
+                else if (SceneManager.GetActiveScene().name.Contains("Asteroid")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Asteroids, winThreshold); }
+                else if (SceneManager.GetActiveScene().name.Contains("Flappy")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Flappy, winThreshold); }
+            }
+            else
+            {
+                SceneManager.LoadScene(input);
+            }
+            
         }
 
 

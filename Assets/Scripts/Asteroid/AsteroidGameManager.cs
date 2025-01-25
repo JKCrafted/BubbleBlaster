@@ -12,6 +12,10 @@ namespace Asteriod
         public int shields = 1;
         private EndState endState;
 
+        public GameObject enemyShip;
+        bool enemyShipSpawned = false;
+
+
         public GameObject shield_ui;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +46,11 @@ namespace Asteriod
             {
                 gameTime = 0;
                 checkWinCondition();
+            }
+
+            if (gameTime > 1 && gameTime <= 30 && enemyShipSpawned == false) {
+                Instantiate(enemyShip, new Vector3(300, 50, 50), Quaternion.identity);
+                enemyShipSpawned = true;
             }
 
         }
