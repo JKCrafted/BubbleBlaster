@@ -849,7 +849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.0263624
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -857,7 +857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.0897667
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1035,6 +1035,7 @@ GameObject:
   - component: {fileID: 1485813193}
   - component: {fileID: 1485813192}
   - component: {fileID: 1485813195}
+  - component: {fileID: 1485813196}
   m_Layer: 0
   m_Name: AsteroidPortal
   m_TagString: Untagged
@@ -1144,6 +1145,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 3
+--- !u!95 &1485813196
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485813190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ce0b9376e61a0d4f81c756629801b4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1607270784
 GameObject:
   m_ObjectHideFlags: 0
