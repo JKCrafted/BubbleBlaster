@@ -1,5 +1,6 @@
 namespace BubbleWubble
 {
+    using AYellowpaper.SerializedCollections;
     using TMPro;
     using UnityEngine;
     
@@ -16,10 +17,37 @@ namespace BubbleWubble
         [Tooltip("The box for showing dialogue text.")]
         private TextMeshProUGUI dialogueBox;
 
+        [SerializeField]
+        [Tooltip("Link minigame enum to animation string.")]
+        private SerializedDictionary<BubbleGame.MinigameType, string> minigameCutscenes = new SerializedDictionary<BubbleGame.MinigameType, string>();
+
+        /// <summary>
+        /// Remember what cutscenes we've played
+        /// </summary>
+        private static SerializedDictionary<BubbleGame.MinigameType, bool> playedCutscenes = new SerializedDictionary<BubbleGame.MinigameType, bool>();
+
         /// <summary>
         /// Is a cutscene playing right now?
         /// </summary>
         bool cutscenePlaying = false;
+
+        private void Start()
+        {
+            BubbleGame.Instance.LinkCutsceneSystem(this);
+        }
+
+        /// <summary>
+        /// Play a minigame's finished cutscene.
+        /// </summary>
+        /// <param name="minigameType">What minigame cutscene should we play?</param>
+        public void PlayMinigameFinishedCutscene(BubbleGame.MinigameType minigameType)
+        {
+            if (minigameCutscenes.ContainsKey(minigameType) && !playedCutscenes.ContainsKey(minigameType))
+            {
+                PlayCutscene(minigameCutscenes[minigameType]);
+                playedCutscenes.Add(minigameType, true);
+            }
+        }
 
         /// <summary>
         /// Play a cutscene, cut out gameplay.

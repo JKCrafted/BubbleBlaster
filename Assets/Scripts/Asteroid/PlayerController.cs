@@ -16,6 +16,12 @@ namespace Asteriod
         public float radius = 150;
 
         public GameObject bullet;
+        public GameObject instructions;
+
+        private bool showing_instructions;
+        public AudioSource audio_source;
+        public AudioClip[] shooting_sounds;
+        public AudioClip explode_sound;
 
         Vector3 velocity;
 
@@ -23,21 +29,30 @@ namespace Asteriod
         {
             rigidbody = GetComponent<Rigidbody>();
             gameManager = GameObject.Find("AsteroidGameManager").GetComponent<AsteroidGameManager>();
+            showing_instructions = true;
         }
 
         void Update()
         {   
-            // if gameManager.gameOver == true player cannot move or shoot
-            if (gameManager.isGameOver() == true)
+            if (showing_instructions)
             {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    showing_instructions = false;
+                    instructions.SetActive(false);
+                    gameManager.restartGame();
+                }
                 return;
             }
+            
             playerMovement();
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                audio_source.PlayOneShot(shooting_sounds[UnityEngine.Random.Range(0, shooting_sounds.Length)]);
                 GameObject gun = GameObject.FindWithTag("Gun");
                 Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+
             }
         }
 
@@ -78,6 +93,7 @@ namespace Asteriod
                 gameManager.takeDamage(1);
                 StartCoroutine(Shake(3, 0.2f));
             }
+            audio_source.PlayOneShot(explode_sound);
         }
 
         public void playerMovement()

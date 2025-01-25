@@ -26,21 +26,23 @@ namespace BubbleWubble
             Asteroids
         }
 
-        [SerializeField]
-        [Tooltip("A ref to the HUB scene's custscene system")]
-        private CutsceneSystem cutsceneSystem;
 
         [SerializeField]
         private GameObject escapeMenu;
 
         [SerializeField]
-        private SUPERCharacterAIO characterRef;
+        private HUBPlayer characterRef;
+
+        private CutsceneSystem cutsceneSystem;
 
         /// <summary>
         /// Track what minigames we've tried/completed.
         /// </summary>
         private Dictionary<MinigameType, bool> attemptedMinigames = new Dictionary<MinigameType, bool>();
 
+        /// <summary>
+        /// Remember where the player first started so we can return them there.
+        /// </summary>
         private Vector3 playerInitialPos;
 
         /// <summary>
@@ -110,9 +112,8 @@ namespace BubbleWubble
         /// <param name="isShown">True if shown, false if not.</param>
         public void ShowHideEscapeMenu(bool isShown)
         {
-            characterRef.enabled = !isShown;
             Cursor.lockState = isShown ? CursorLockMode.Confined : CursorLockMode.Locked;
-
+            characterRef.SetInControl(!isShown);
             Cursor.visible = isShown;
             escapeMenu.gameObject.SetActive(isShown);
         }
@@ -144,7 +145,7 @@ namespace BubbleWubble
         /// Get a reference to the hub player character.
         /// </summary>
         /// <returns>Ref to hub player character</returns>
-        public SUPERCharacterAIO GetHubCharacter()
+        public HUBPlayer GetHubCharacter()
         {
             return characterRef;
         }
@@ -156,6 +157,11 @@ namespace BubbleWubble
         public Dictionary<MinigameType, bool> GetAttemptedMinigames()
         {
             return attemptedMinigames;
+        }
+
+        public void LinkCutsceneSystem(CutsceneSystem sys)
+        {
+            cutsceneSystem = sys;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace BubbleWubble
         public bool winThreshold = false;
         public GameObject fade;
         public Color color = Color.white;
+        public float firstDelay = 5f;
+        public float secondDelay = 2f;
 
         public bool isEnding = false;
 
@@ -85,6 +87,7 @@ namespace BubbleWubble
             yield return new WaitForSeconds(speed+0.1f);
             if (input == "scene_hub")
             {
+                Debug.Log("You won? " + winThreshold.ToString());
                 if (SceneManager.GetActiveScene().name.Contains("Snake")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold); }
                 else if (SceneManager.GetActiveScene().name.Contains("Asteroid")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Asteroids, winThreshold); }
                 else if (SceneManager.GetActiveScene().name.Contains("Flappy")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Flappy, winThreshold); }
@@ -95,8 +98,6 @@ namespace BubbleWubble
             }
             
         }
-
-
 
         // Update is called once per frame
         IEnumerator GameEndCoroutine()
@@ -115,14 +116,14 @@ namespace BubbleWubble
 
             ending.gameObject.SetActive(true);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(firstDelay);
 
             Debug.Log("Past the point");
             
             score.gameObject.SetActive(false);
             ending.gameObject.SetActive(false);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(secondDelay);
             Cursor.lockState = true ? CursorLockMode.Confined : CursorLockMode.Locked;
 
             Cursor.visible = true;

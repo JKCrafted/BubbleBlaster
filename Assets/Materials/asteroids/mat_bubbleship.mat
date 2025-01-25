@@ -23,10 +23,9 @@ Material:
   m_Name: mat_bubbleship
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: fd42102e0453a714e806fe5768e8f463, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
-  - _EMISSION
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -44,9 +43,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Metallic: 0.737
+    - _Smoothness: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.36862746}
-    - _Color: {r: 1, g: 1, b: 1, a: 0.36862746}
+    - _BaseColor: {r: 1, g: 0.8915094, b: 0.8915094, a: 0.36862746}
+    - _Color: {r: 1, g: 0.8915094, b: 0.8915094, a: 0.36862746}
+    - _EmissionColor: {r: 0.9150943, g: 0.82444817, b: 0.82444817, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
