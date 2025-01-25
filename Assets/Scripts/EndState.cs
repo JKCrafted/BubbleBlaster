@@ -11,11 +11,14 @@ namespace BubbleWubble
     public class EndState : MonoBehaviour
     {
         private TextMeshProUGUI ending;
-        private TextMeshProUGUI score;
+        public TextMeshProUGUI score;
         private TextMeshProUGUI replay;
         public bool winThreshold = false;
         public GameObject fade;
         public Color color = Color.white;
+
+        public bool isEnding = false;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -50,7 +53,11 @@ namespace BubbleWubble
         public void GameEnd()
         {
             Debug.Log("Game Over1!");
-            StartCoroutine(GameEndCoroutine());
+
+            if (isEnding == false)
+            {
+                StartCoroutine(GameEndCoroutine());
+            }
         }
 
         public void ReplayYes()
@@ -94,6 +101,9 @@ namespace BubbleWubble
         // Update is called once per frame
         IEnumerator GameEndCoroutine()
         {
+            isEnding = true;
+            Debug.Log("Entered coroutine");
+
             if (winThreshold)
             {
                 ending.text = "You earned a key!";
@@ -102,8 +112,13 @@ namespace BubbleWubble
             {
                 ending.text = "";
             }
+
             ending.gameObject.SetActive(true);
+
             yield return new WaitForSeconds(5f);
+
+            Debug.Log("Past the point");
+            
             score.gameObject.SetActive(false);
             ending.gameObject.SetActive(false);
 
