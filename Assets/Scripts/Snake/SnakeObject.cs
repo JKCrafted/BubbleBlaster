@@ -23,8 +23,8 @@ public class SnakeObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Old");
-        Debug.Log(rb.linearVelocity);
+        //Debug.Log("Old");
+        //Debug.Log(rb.linearVelocity);
         transform.rotation = Quaternion.identity;
 
         if (running)
@@ -47,8 +47,8 @@ public class SnakeObject : MonoBehaviour
                 newVelocity.z = 5;
                 rb.linearVelocity = newVelocity;
             }
-            Debug.Log("New");
-            Debug.Log(rb.linearVelocity);
+            //Debug.Log("New");
+            //Debug.Log(rb.linearVelocity);
             if (Input.GetKeyDown(KeyCode.W)) 
             {
                 rb.AddForce(Vector3.forward * speed);
