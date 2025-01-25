@@ -1077,6 +1077,7 @@ MonoBehaviour:
   snake: []
   runEnd: 0
   score: 0
+  passingScore: 15
 --- !u!114 &1829414267
 MonoBehaviour:
   m_ObjectHideFlags: 0
