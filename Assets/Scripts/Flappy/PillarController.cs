@@ -6,10 +6,12 @@ namespace Flappy
     {
         [SerializeField] private float speed = 1;
         [SerializeField] private float xBound = -15;
+        private FlappyGameManager gameManager;
 
         void Start()
         {
             // rigidbody = GetComponent<Rigidbody>();
+            gameManager = GameObject.Find("FlappyGameManager").GetComponent<FlappyGameManager>();
             Randomise();
 
         }
@@ -44,6 +46,13 @@ namespace Flappy
         private void OnCollisionEnter(Collision collision)
         {
             Debug.Log("Collided with pillar!");
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            
+                gameManager.UpdateScore(1);
+            
         }
     }
 }

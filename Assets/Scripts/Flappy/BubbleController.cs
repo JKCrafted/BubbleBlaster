@@ -11,9 +11,15 @@ namespace Flappy
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
-
         }
 
+        private void Flap()
+        {
+            rigidbody.linearVelocity = Vector3.zero;
+            Vector3 current_pos = transform.position;
+            current_pos += transform.up * force * Time.deltaTime;
+            transform.position = current_pos;
+        }
         private void Update()
         {
             if (Input.GetKey(KeyCode.Space))
@@ -22,16 +28,10 @@ namespace Flappy
             }
         }
 
-        private void Flap()
-        {
-            rigidbody.linearVelocity = Vector3.zero;
-            rigidbody.AddForce(Vector3.up * force * Time.deltaTime);
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            Debug.Log("Game Over!");
-        }
+        // private void OnCollisionEnter(Collision collision)
+        // {
+        //     gameManager.GameOver();
+        // }
 
     }
 }
