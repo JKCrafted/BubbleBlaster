@@ -2514,6 +2514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flash
       objectReference: {fileID: 0}
+    - target: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7220353042376142177, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
       propertyPath: fadeDirection
       value: out
