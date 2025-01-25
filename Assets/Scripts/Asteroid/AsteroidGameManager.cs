@@ -15,7 +15,6 @@ namespace Asteriod
         public GameObject enemyShip;
         bool enemyShipSpawned = false;
 
-
         public GameObject shield_ui;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,8 +63,6 @@ namespace Asteriod
             if (shield_ui != null) {
                 shield_ui.GetComponent<TMPro.TextMeshProUGUI>().text = "Shields: " + shields;
             }
-            
-            checkWinCondition();
 
         }
 
@@ -86,7 +83,7 @@ namespace Asteriod
 
         private void checkWinCondition()
         {
-            if (isGameOver())
+            if (isGameWon())
             {
                 Debug.Log("YOU WIN!");
                 endState.winThreshold = true;
@@ -101,7 +98,7 @@ namespace Asteriod
             }
         }
 
-        private void restartGame() {
+        public void restartGame() {
             // destroy all asteroids under bubble machine
             // get the bubble machine and reset it
             GameObject bubbleMachine = GameObject.Find("BubbleMachine");
@@ -121,15 +118,15 @@ namespace Asteriod
             setScore(0);
             // reset player shields
             shields = 1;
-            takeDamage(0);
+
             // reset game time
-            gameTime = 60f;
+            gameTime = 120f;
 
             // spawn new asteroids
             bubbleMachine.GetComponent<BubbleMachine>().spawnAsteroids();
         }
 
-        public bool isGameOver() {
+        public bool isGameWon() {
             if (shields > 0 && player_score >= 50) {
                 return true;
             } else {
