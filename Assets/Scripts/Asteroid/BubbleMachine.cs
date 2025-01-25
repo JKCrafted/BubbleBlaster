@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 namespace Asteriod

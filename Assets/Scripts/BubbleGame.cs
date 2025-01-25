@@ -1,33 +1,77 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class BubbleGame : MonoBehaviour
+namespace BubbleWubble
 {
-    public static BubbleGame Instance;
+    using SUPERCharacter;
+    using UnityEngine;
+    using UnityEngine.SceneManagement;
 
-    [SerializeField]
-    private CutsceneSystem cutsceneSystem;
-
-
-    private void Awake()
+    /// <summary>
+    /// Core game manager.
+    /// </summary>
+    public class BubbleGame : MonoBehaviour
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+        /// <summary>
+        /// Static instance to the game manager.
+        /// </summary>
+        public static BubbleGame Instance;
 
+        [SerializeField]
+        [Tooltip("A ref to the HUB scene's custscene system")]
+        private CutsceneSystem cutsceneSystem;
 
-    public void ReturnToHub(bool success = false)
-    {
-        SceneManager.LoadScene(0);
+        [SerializeField]
+        private GameObject escapeMenu;
 
+        [SerializeField]
+        private SUPERCharacterAIO characterRef;
 
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
+        /// <summary>
+        /// Awake, set up instance and make this not die when scene changes.
+        /// </summary>
+        private void Awake()
         {
-            cutsceneSystem.PlayCutscene("cs_test");
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        /// <summary>
+        /// Return to the hub world from a subworld.
+        /// </summary>
+        /// <param name="success">Did you win your minigame?</param>
+        public void ReturnToHub(bool success = false)
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+
+        /// <summary>
+        /// Unity Update() Debug stuff.
+        /// </summary>
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                cutsceneSystem.PlayCutscene("cs_test");
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ShowHideEscapeMenu(!escapeMenu.gameObject.activeSelf);
+            }
+        }
+
+        public void ShowHideEscapeMenu(bool isShown)
+        {
+            characterRef.enabled = !isShown;
+            escapeMenu.gameObject.SetActive(isShown);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }
+
+
