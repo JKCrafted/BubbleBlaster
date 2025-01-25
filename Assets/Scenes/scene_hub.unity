@@ -853,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.06
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62193c7ee6047de45a534b1c6b463f24, type: 3}
       propertyPath: m_LocalPosition.z
@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 1385710299}
   - component: {fileID: 1385710298}
   - component: {fileID: 1385710301}
+  - component: {fileID: 1385710302}
   m_Layer: 0
   m_Name: SnakePortal
   m_TagString: Untagged
@@ -1022,6 +1023,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 2
+--- !u!95 &1385710302
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385710296}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b637cc9393e531f42a3d2acfce100c6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1485813190
 GameObject:
   m_ObjectHideFlags: 0
