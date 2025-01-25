@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class AsteroidGameManager : MonoBehaviour
+namespace Asteriod
 {
-    public int player_score;
-    public GameObject score_ui;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class AsteroidGameManager : MonoBehaviour
     {
-        updateScore(0); 
-    }
+        public int player_score;
+        public GameObject score_ui;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            updateScore(0);
+        }
 
-    public void updateScore(int score)
-    {
-        player_score += score;
-        // update ui textmesh pro
+        // Update is called once per frame
+        void Update()
+        {
 
-        score_ui.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + player_score;
+        }
+
+        public void updateScore(int score)
+        {
+            player_score += score;
+            // update ui textmesh pro
+
+            score_ui.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + player_score;
+        }
     }
 }

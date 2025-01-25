@@ -1,41 +1,44 @@
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+namespace Asteriod
 {
-
-    [SerializeField]
-    float bullet_speed = 10f;
-    public float radius = 150;
-
-    Rigidbody rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
+    public class BulletController : MonoBehaviour
     {
 
-        Vector3 current_pos = transform.position;
+        [SerializeField]
+        float bullet_speed = 10f;
+        public float radius = 150;
 
-        if (current_pos.x < -radius || current_pos.x > radius || current_pos.y < -radius || current_pos.y > radius)
+        Rigidbody rb;
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            Destroy(this.gameObject);
+            rb = GetComponent<Rigidbody>();
         }
 
-        current_pos += transform.forward * bullet_speed * Time.deltaTime;
-
-        transform.position = current_pos;
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Asteroid")
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(this.gameObject );
+
+            Vector3 current_pos = transform.position;
+
+            if (current_pos.x < -radius || current_pos.x > radius || current_pos.y < -radius || current_pos.y > radius)
+            {
+                Destroy(this.gameObject);
+            }
+
+            current_pos += transform.forward * bullet_speed * Time.deltaTime;
+
+            transform.position = current_pos;
+        }
+
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Asteroid")
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
