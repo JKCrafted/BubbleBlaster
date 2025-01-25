@@ -1,20 +1,31 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class HubPortal : MonoBehaviour
+namespace BubbleWubble
 {
-    [SerializeField]
-    private int sceneToLoad;
+    using UnityEngine;
 
-
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// The portal into the minigames from the HUB.
+    /// </summary>
+    public class HubPortal : MonoBehaviour
     {
-        if (other.gameObject.tag.Equals("Player"))
+        [SerializeField]
+        [Tooltip("Scene ID from build hierarchy")]
+        private int sceneToLoad;
+
+        /// <summary>
+        /// When the player collides with us, switch the scene!
+        /// </summary>
+        /// <param name="other">Who collided with us?</param>
+        private void OnTriggerEnter(Collider other)
         {
-            if (BubbleWubble.BubbleGame.Instance != null)
+            if (other.gameObject.tag.Equals("Player"))
             {
-                BubbleWubble.BubbleGame.Instance.SwitchScene(sceneToLoad);
+                if (BubbleGame.Instance != null)
+                {
+                    BubbleGame.Instance.SwitchScene(sceneToLoad);
+                }
             }
         }
     }
 }
+
+

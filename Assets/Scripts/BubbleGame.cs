@@ -62,6 +62,10 @@ namespace BubbleWubble
             }
         }
 
+        /// <summary>
+        /// Show the menu that will allow the player to quit. Shows and unlocks cursor.
+        /// </summary>
+        /// <param name="isShown">True if shown, false if not.</param>
         public void ShowHideEscapeMenu(bool isShown)
         {
             characterRef.enabled = !isShown;
@@ -70,12 +74,19 @@ namespace BubbleWubble
             Cursor.visible = isShown;
             escapeMenu.gameObject.SetActive(isShown);
         }
-
+            
+        /// <summary>
+        /// What do you think this does?
+        /// </summary>
         public void QuitGame()
         {
             Application.Quit();
         }
 
+        /// <summary>
+        /// Switch to a new scene given an index. Note this object will persist.
+        /// </summary>
+        /// <param name="sceneID">Scene ID in the build hierarchy.</param>
         public void SwitchScene(int sceneID)
         {
             if (sceneID > 0)

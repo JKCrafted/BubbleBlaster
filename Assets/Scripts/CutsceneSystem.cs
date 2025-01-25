@@ -1,30 +1,50 @@
-using UnityEngine;
-
-public class CutsceneSystem : MonoBehaviour
+namespace BubbleWubble
 {
-    [SerializeField]
-    private Animator cutsceneAnimator;
-
-    [SerializeField]
-    private GameObject playerObject;
-
-    bool cutscenePlaying = false;
-
-    public void PlayCutscene(string cutsceneID)
+    using UnityEngine;
+    
+    /// <summary>
+    /// The system wot plays our cutscenes in the game.
+    /// </summary>
+    public class CutsceneSystem : MonoBehaviour
     {
-        if (!cutscenePlaying)
+        [SerializeField]
+        [Tooltip("Animator that controls the cutscenes.")]
+        private Animator cutsceneAnimator;
+
+        [SerializeField]
+        [Tooltip("A ref to the hub player object.")]
+        private GameObject playerObject;
+
+        /// <summary>
+        /// Is a cutscene playing right now?
+        /// </summary>
+        bool cutscenePlaying = false;
+
+        /// <summary>
+        /// Play a cutscene, cut out gameplay.
+        /// </summary>
+        /// <param name="cutsceneID">String anim ID</param>
+        public void PlayCutscene(string cutsceneID)
         {
-            playerObject.gameObject.SetActive(false);
+            if (!cutscenePlaying)
+            {
+                playerObject.gameObject.SetActive(false);
 
-            cutsceneAnimator.Play(cutsceneID);
+                cutsceneAnimator.Play(cutsceneID);
 
-            cutscenePlaying = true;
+                cutscenePlaying = true;
+            }
+        }
+
+        /// <summary>
+        /// Give the player their camera back.
+        /// </summary>
+        public void RestorePlayerCam()
+        {
+            cutscenePlaying = false;
+            playerObject.gameObject.SetActive(true);
         }
     }
-
-    public void RestorePlayerCam()
-    {
-        cutscenePlaying = false;
-        playerObject.gameObject.SetActive(true);
-    }
 }
+
+
