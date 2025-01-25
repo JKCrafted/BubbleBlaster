@@ -16,6 +16,9 @@ namespace Asteriod
         public float radius = 150;
 
         public GameObject bullet;
+        public GameObject instructions;
+
+        private bool showing_instructions;
 
         Vector3 velocity;
 
@@ -23,10 +26,21 @@ namespace Asteriod
         {
             rigidbody = GetComponent<Rigidbody>();
             gameManager = GameObject.Find("AsteroidGameManager").GetComponent<AsteroidGameManager>();
+            showing_instructions = true;
         }
 
         void Update()
         {   
+            if (showing_instructions)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    showing_instructions = false;
+                    instructions.SetActive(false);
+                    gameManager.restartGame();
+                }
+                return;
+            }
             // if gameManager.gameOver == true player cannot move or shoot
             if (gameManager.isGameOver() == true)
             {

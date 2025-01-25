@@ -101,7 +101,7 @@ namespace Asteriod
             }
         }
 
-        private void restartGame() {
+        public void restartGame() {
             // destroy all asteroids under bubble machine
             // get the bubble machine and reset it
             GameObject bubbleMachine = GameObject.Find("BubbleMachine");

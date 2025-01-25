@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Asteriod
 {
@@ -37,6 +38,8 @@ namespace Asteriod
             current_pos.z = WrapPosition(current_pos.z);
 
             transform.position = current_pos;
+
+            CheckAndFlash(current_pos);
         }
 
         
@@ -53,6 +56,28 @@ namespace Asteriod
             return position;
         }
 
+        private void CheckAndFlash(Vector3 position)
+        {
+            if (Mathf.Abs(position.x) > radius * 0.9f || Mathf.Abs(position.y) > radius * 0.9f || Mathf.Abs(position.z) > radius * 0.9f)
+            {
+                StartCoroutine(Flash());
+            }
+        }
+
+        private IEnumerator Flash()
+        {
+            MeshRenderer renderer = GetComponent<MeshRenderer>();
+            Color originalColor = renderer.material.color;
+            Color flashColor = Color.red;
+
+            for (int i = 0; i < 5; i++)
+            {
+                renderer.material.color = flashColor;
+                yield return new WaitForSeconds(0.1f);
+                renderer.material.color = originalColor;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
         public void explodeAsteroidBubble()
         {
             // when this bubble is shot then it should explode!!!!
