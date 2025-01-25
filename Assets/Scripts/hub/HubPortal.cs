@@ -12,7 +12,7 @@ namespace BubbleWubble
         [SerializeField]
         [Tooltip("Scene ID from build hierarchy")]
         private int sceneToLoad;
-        [SerializeField] Color color;
+        public Color color;
         public GameObject fade;
 
         /// <summary>
@@ -32,15 +32,12 @@ namespace BubbleWubble
         }
         IEnumerator LoadingScene(Color colour, float speed)
         {
-            if (fade != null)
-            {
-                GameObject newFade = Instantiate(fade);
-                FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
-                fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
-                fadeEffect.fadingSpeed = speed;
-                yield return new WaitForSeconds(speed + 0.1f);
-            }
-
+            GameObject newFade = Instantiate(fade);
+            newFade.transform.SetParent(transform);
+            FadeEffect fadeEffect = newFade.GetComponent<FadeEffect>();
+            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
+            fadeEffect.fadingSpeed = speed;
+            yield return new WaitForSeconds(speed+0.1f);
             BubbleGame.Instance.SwitchScene(sceneToLoad);
         }
 

@@ -11,11 +11,14 @@ namespace BubbleWubble
     public class EndState : MonoBehaviour
     {
         private TextMeshProUGUI ending;
-        private TextMeshProUGUI score;
+        public TextMeshProUGUI score;
         private TextMeshProUGUI replay;
         public bool winThreshold = false;
         public GameObject fade;
         public Color color = Color.white;
+
+        public bool isEnding = false;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -49,8 +52,12 @@ namespace BubbleWubble
 
         public void GameEnd()
         {
+            Debug.Log("Game Over1!");
 
-            StartCoroutine(GameEndCoroutine());
+            if (isEnding == false)
+            {
+                StartCoroutine(GameEndCoroutine());
+            }
         }
 
         public void ReplayYes()
@@ -71,18 +78,31 @@ namespace BubbleWubble
         IEnumerator LoadingScene(string input, Color colour, float speed)
         {
             GameObject newFade = Instantiate(fade);
-            FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
+            newFade.transform.SetParent(transform);
+            FadeEffect fadeEffect = newFade.GetComponent<FadeEffect>();
             fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
             fadeEffect.fadingSpeed = speed;
             yield return new WaitForSeconds(speed+0.1f);
-            BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, true);
+            if (input == "scene_hub")
+            {
+                Debug.Log("You won? " + winThreshold.ToString());
+                if (SceneManager.GetActiveScene().name.Contains("Snake")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold); }
+                else if (SceneManager.GetActiveScene().name.Contains("Asteroid")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Asteroids, winThreshold); }
+                else if (SceneManager.GetActiveScene().name.Contains("Flappy")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Flappy, winThreshold); }
+            }
+            else
+            {
+                SceneManager.LoadScene(input);
+            }
+            
         }
-
-
 
         // Update is called once per frame
         IEnumerator GameEndCoroutine()
         {
+            isEnding = true;
+            Debug.Log("Entered coroutine");
+
             if (winThreshold)
             {
                 ending.text = "You earned a key!";
@@ -91,8 +111,13 @@ namespace BubbleWubble
             {
                 ending.text = "";
             }
+
             ending.gameObject.SetActive(true);
+
             yield return new WaitForSeconds(5f);
+
+            Debug.Log("Past the point");
+            
             score.gameObject.SetActive(false);
             ending.gameObject.SetActive(false);
 

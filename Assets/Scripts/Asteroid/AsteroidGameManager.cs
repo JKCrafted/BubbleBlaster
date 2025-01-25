@@ -49,7 +49,8 @@ namespace Asteriod
             }
 
             if (gameTime > 1 && gameTime <= 30 && enemyShipSpawned == false) {
-                Instantiate(enemyShip, new Vector3(300, 50, 50), Quaternion.identity);
+                
+                Instantiate(enemyShip, new Vector3(150, 50, 50), Quaternion.identity);
                 enemyShipSpawned = true;
             }
 
@@ -129,7 +130,7 @@ namespace Asteriod
         }
 
         public bool isGameOver() {
-            if (shields > 0 && player_score > 50) {
+            if (shields > 0 && player_score >= 50) {
                 return true;
             } else {
                 return false;

@@ -1,3 +1,4 @@
+using BubbleWubble;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,6 +19,17 @@ public class FadeEffect : MonoBehaviour
     void Start()
     {
         StartCoroutine(WaitOnStart());
+        if (transform.parent != null)
+        {
+            if (transform.parent.gameObject.name.Contains("ScoreCanvas"))
+            {
+                color = transform.parent.gameObject.GetComponent<EndState>().color;
+            }
+            else if (transform.parent.gameObject.name.Contains("Portal"))
+            {
+                color = transform.parent.gameObject.GetComponent<HubPortal>().color;
+            }
+        }
         if (canvas == null) canvas = GetComponent<Canvas>();
         CanvasGroup canvasGroup = canvas.GetComponent<CanvasGroup>();
         if (canvasGroup == null) Debug.LogError("Please assign a canvas group to the canvas!");
