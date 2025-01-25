@@ -490,7 +490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c9cc7d4ccb3a740b4f6109499bdf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   xBound: -15
 --- !u!65 &7723772773637169091
 BoxCollider:
@@ -1190,7 +1189,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: -0.55, z: 0}
-  m_LocalScale: {x: 4.5, y: 0.1, z: 1}
+  m_LocalScale: {x: 10, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6087771057984915297}
@@ -1298,7 +1297,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0.55, z: 0}
-  m_LocalScale: {x: 4.5, y: 0.1, z: 1}
+  m_LocalScale: {x: 10, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6087771057984915297}
