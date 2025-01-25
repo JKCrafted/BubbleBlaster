@@ -4,7 +4,7 @@ public class FlappyGameManager : MonoBehaviour
 {
     [SerializeField] private int playerScore;
     [SerializeField] private GameObject scoreUI;
-    public float pillarSpeed;
+    public float pillarSpeed = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

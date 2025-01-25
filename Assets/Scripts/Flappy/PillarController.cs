@@ -4,7 +4,7 @@ namespace Flappy
 {
     public class PillarController : MonoBehaviour
     {
-        [SerializeField] public float pillarSpeed = 1f;
+        private float pillarSpeed = 1f;
         [SerializeField] private float xBound = -15f;
         private FlappyGameManager gameManager;
         private SpawnManager spawnManager;
@@ -21,6 +21,7 @@ namespace Flappy
         private void Update()
         {
             pillarSpeed = gameManager.pillarSpeed;
+            Debug.Log(pillarSpeed);
             this.transform.position -= Vector3.right * pillarSpeed * Time.deltaTime;
 
             if (this.transform.position.x < xBound)
@@ -57,7 +58,10 @@ namespace Flappy
             
                 gameManager.UpdateScore(1);
                 gameManager.pillarSpeed += 0.1f;
-                spawnManager.spawnInterval -= 0.1f;
+                if (spawnManager.spawnInterval > 0.4f) {
+
+                    spawnManager.spawnInterval -= 0.4f;
+                }
             
         }
     }

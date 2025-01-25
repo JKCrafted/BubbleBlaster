@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScore: 0
   scoreUI: {fileID: 1859002629}
+  pillarSpeed: 1
 --- !u!4 &187837821
 Transform:
   m_ObjectHideFlags: 0
