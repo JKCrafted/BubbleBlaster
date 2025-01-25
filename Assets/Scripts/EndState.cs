@@ -55,14 +55,16 @@ namespace BubbleWubble
             Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
 
             Cursor.visible = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
         public void ReplayNo()
         {
             Cursor.lockState = false ? CursorLockMode.Confined : CursorLockMode.Locked;
 
             Cursor.visible = false;
-            SceneManager.LoadScene("scene_hub");
+
+            BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold);
         }
 
 

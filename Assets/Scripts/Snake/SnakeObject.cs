@@ -17,7 +17,12 @@ namespace Snake
         private SpawnApple spawnApple;
         bool running = true;
         [SerializeField] private float speed = 100f;
+
         private int wallHits = 0;
+
+        [SerializeField]
+        private int maxHits = 1;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -126,7 +131,7 @@ namespace Snake
         private void GameEnd()
         {
             StartCoroutine(TakeHit());
-            if (wallHits > 8)
+            if (wallHits >= maxHits)
             {
                 running = false;
                 for (int i = 1; i < gameManager.snake.Count; i++)

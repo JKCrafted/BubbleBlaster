@@ -1440,7 +1440,7 @@ MonoBehaviour:
   snake: []
   runEnd: 1
   score: 0
-  passingScore: 15
+  passingScore: 2
   snakeMaterials:
   - {fileID: 2100000, guid: c739eef350e5f364d968030da6910e90, type: 2}
   - {fileID: 2100000, guid: a009c1eed1dc06644a6763b399e2ca20, type: 2}
