@@ -1,6 +1,8 @@
 namespace BubbleWubble
 {
+    using NUnit.Framework;
     using SUPERCharacter;
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.SceneManagement;
 
@@ -14,6 +16,16 @@ namespace BubbleWubble
         /// </summary>
         public static BubbleGame Instance;
 
+        /// <summary>
+        /// The type of minigame.
+        /// </summary>
+        public enum MinigameType
+        {
+            Flappy,
+            Snake,
+            Asteroids
+        }
+
         [SerializeField]
         [Tooltip("A ref to the HUB scene's custscene system")]
         private CutsceneSystem cutsceneSystem;
@@ -23,6 +35,11 @@ namespace BubbleWubble
 
         [SerializeField]
         private SUPERCharacterAIO characterRef;
+
+        /// <summary>
+        /// Track what minigames we've completed? 
+        /// </summary>
+        private Dictionary<MinigameType, bool> completedMinigames;
 
         /// <summary>
         /// Awake, set up instance and make this not die when scene changes.
@@ -43,8 +60,9 @@ namespace BubbleWubble
         /// <summary>
         /// Return to the hub world from a subworld.
         /// </summary>
+        /// <param name="fromMinigame">What minigame are we coming from?</param>
         /// <param name="success">Did you win your minigame?</param>
-        public void ReturnToHub(bool success = false)
+        public void ReturnToHub(MinigameType fromMinigame, bool success = false)
         {
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
@@ -111,6 +129,15 @@ namespace BubbleWubble
         public SUPERCharacterAIO GetHubCharacter()
         {
             return characterRef;
+        }
+
+        /// <summary>
+        /// Get a dictionary of completed minigames.
+        /// </summary>
+        /// <returns>Dictionary of <Minigame, Completed></returns>
+        public Dictionary<MinigameType, bool> GetCompletedMinigames()
+        {
+            return completedMinigames;
         }
     }
 }
