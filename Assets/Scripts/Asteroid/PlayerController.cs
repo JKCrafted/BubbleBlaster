@@ -2,88 +2,101 @@ using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Asteriod
 {
-    private Rigidbody rigidbody;
-
-    public int shields;
-    public float speed = 15f;
-    public float pitch_speed = 100f;
-    public float yaw_speed = 100f;
-    public float radius = 150;
-
-    public GameObject bullet;
-
-    Vector3 velocity;
-
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        rigidbody = GetComponent<Rigidbody>();
-        
-    }
+        private Rigidbody rigidbody;
 
-    void Update()
-    {
-        playerMovement();
+        public int shields;
+        public float speed = 15f;
+        public float pitch_speed = 100f;
+        public float yaw_speed = 100f;
+        public float radius = 150;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        public GameObject bullet;
+
+        Vector3 velocity;
+
+        void Start()
         {
-            GameObject gun = GameObject.FindWithTag("Gun");
-            Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+            rigidbody = GetComponent<Rigidbody>();
+
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Asteroid")
+        void Update()
         {
-            shields--;
+            playerMovement();
 
-            if(shields <= 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                // GAME OVER
-                // END SCENE
-                Debug.Log("YOU DIED!!!!!!!!!!");
+                GameObject gun = GameObject.FindWithTag("Gun");
+                Instantiate(bullet, gun.transform.position, gun.transform.rotation);
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Asteroid")
+            {
+                shields--;
+
+                if (shields <= 0)
+                {
+                    // GAME OVER
+                    // END SCENE
+                    Debug.Log("YOU DIED!!!!!!!!!!");
+                }
+            }
+        }
+
+        public void playerMovement()
+        {
+            float hor_input = Input.GetAxis("Horizontal");
+            float ver_input = Input.GetAxis("Vertical");
+
+            Vector3 current_pos = transform.position;
+
+            current_pos += transform.forward * speed * Time.deltaTime;
+            current_pos += (transform.right * hor_input) * speed * Time.deltaTime;
+            current_pos += (transform.up * ver_input) * speed * Time.deltaTime;
+
+            if (current_pos.x > radius)
+            {
+                current_pos.x = -radius;
+            }
+            else if (current_pos.x < -radius)
+            {
+                current_pos.x = radius;
+            }
+
+            if (current_pos.y > radius)
+            {
+                current_pos.y = -radius;
+            }
+            else if (current_pos.y < -radius)
+            {
+                current_pos.y = radius;
+            }
+
+            if (current_pos.z > radius)
+            {
+                current_pos.z = -radius;
+            }
+            else if (current_pos.z < -radius)
+            {
+                current_pos.z = radius;
+            }
+
+            transform.position = current_pos;
+
+            float pitchDelta = ver_input * pitch_speed * Time.deltaTime;
+            float yawDelta = hor_input * yaw_speed * Time.deltaTime;
+
+            transform.rotation *= Quaternion.Euler(pitchDelta, yawDelta, 0);
+
+
+        }
     }
 
-    public void playerMovement()
-    {
-        float hor_input = Input.GetAxis("Horizontal");
-        float ver_input = Input.GetAxis("Vertical");
-
-        Vector3 current_pos = transform.position;
-
-        current_pos += transform.forward * speed * Time.deltaTime;
-        current_pos += (transform.right * hor_input) * speed * Time.deltaTime;
-        current_pos += (transform.up * ver_input) * speed * Time.deltaTime;
-
-        if(current_pos.x > radius) {
-            current_pos.x = -radius;
-        } else if (current_pos.x < -radius) {
-            current_pos.x = radius;
-        }
-
-        if(current_pos.y > radius) {
-            current_pos.y = -radius;
-        } else if (current_pos.y < -radius) {
-            current_pos.y = radius;
-        }
-
-        if(current_pos.z > radius) {
-            current_pos.z = -radius;
-        } else if (current_pos.z < -radius) {
-            current_pos.z = radius;
-        }
-
-        transform.position = current_pos;
-
-        float pitchDelta = ver_input * pitch_speed * Time.deltaTime;
-        float yawDelta = hor_input * yaw_speed * Time.deltaTime;
-
-        transform.rotation *= Quaternion.Euler(pitchDelta, yawDelta, 0);
-
-        
-    }
 }

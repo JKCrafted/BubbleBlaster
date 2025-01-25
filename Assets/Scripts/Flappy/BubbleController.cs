@@ -1,34 +1,37 @@
 using System;
 using UnityEngine;
 
-public class BubbleController : MonoBehaviour
+namespace Flappy
 {
-    private Rigidbody rigidbody;
-    [SerializeField] private float force;
-
-    private void Start()
+    public class BubbleController : MonoBehaviour
     {
-        rigidbody = GetComponent<Rigidbody>();
+        private Rigidbody rigidbody;
+        [SerializeField] private float force;
 
-    }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
+        private void Start()
         {
-            Flap();
+            rigidbody = GetComponent<Rigidbody>();
+
         }
-    }
 
-    private void Flap()
-    {
-        rigidbody.linearVelocity = Vector3.zero;
-        rigidbody.AddForce(Vector3.up * force * Time.deltaTime);
-    }
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Flap();
+            }
+        }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Game Over!");
-    }
+        private void Flap()
+        {
+            rigidbody.linearVelocity = Vector3.zero;
+            rigidbody.AddForce(Vector3.up * force * Time.deltaTime);
+        }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("Game Over!");
+        }
+
+    }
 }

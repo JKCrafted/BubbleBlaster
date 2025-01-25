@@ -2,18 +2,22 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Snake
 {
-    public List<GameObject> snake = new List<GameObject>();
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        snake.Add(FindObjectOfType<SnakeObject>().gameObject);
-    }
+        public List<GameObject> snake = new List<GameObject>();
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            snake.Add(FindObjectOfType<SnakeObject>().gameObject);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }
+
