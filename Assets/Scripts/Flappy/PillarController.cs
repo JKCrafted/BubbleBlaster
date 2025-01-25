@@ -58,9 +58,9 @@ namespace Flappy
             
                 gameManager.UpdateScore(1);
                 gameManager.pillarSpeed += 0.1f;
-                if (spawnManager.spawnInterval > 0.4f) {
+                if (spawnManager.spawnInterval > 1f) {
 
-                    spawnManager.spawnInterval -= 0.4f;
+                    spawnManager.spawnInterval -= 0.06f;
                 }
             
         }
