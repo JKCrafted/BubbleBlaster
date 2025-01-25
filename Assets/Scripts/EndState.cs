@@ -75,7 +75,7 @@ namespace BubbleWubble
             fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
             fadeEffect.fadingSpeed = speed;
             yield return new WaitForSeconds(speed+0.1f);
-            SceneManager.LoadScene(input);
+            BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, true);
         }
 
 

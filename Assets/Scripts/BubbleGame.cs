@@ -72,7 +72,19 @@ namespace BubbleWubble
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
                 SceneManager.LoadScene(0);
-                characterRef.gameObject.SetActive(true); 
+                characterRef.gameObject.SetActive(true);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                if (!attemptedMinigames.ContainsKey(fromMinigame))
+                {
+                    attemptedMinigames.Add(fromMinigame, success);
+                }
+                else
+                {
+                    attemptedMinigames[fromMinigame] = success;
+                }
             }
         }
 
