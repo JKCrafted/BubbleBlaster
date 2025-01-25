@@ -1,10 +1,13 @@
+using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Asteriod
 {
     public class PlayerController : MonoBehaviour
     {
-        private Rigidbody rigidbody;
+        private new Rigidbody rigidbody;
+        private AsteroidGameManager gameManager;
 
         public int shields;
         public float speed = 15f;
@@ -19,7 +22,7 @@ namespace Asteriod
         void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
-
+            gameManager = GameObject.Find("AsteroidGameManager").GetComponent<AsteroidGameManager>();
         }
 
         void Update()
@@ -37,14 +40,7 @@ namespace Asteriod
         {
             if (collision.gameObject.tag == "Asteroid")
             {
-                shields--;
-
-                if (shields <= 0)
-                {
-                    // GAME OVER
-                    // END SCENE
-                    Debug.Log("YOU DIED!!!!!!!!!!");
-                }
+                gameManager.takeDamage(1);
             }
         }
 

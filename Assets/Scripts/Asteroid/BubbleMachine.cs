@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 namespace Asteriod
@@ -13,6 +14,11 @@ namespace Asteriod
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
+        {
+            spawnAsteroids();
+        }
+
+        public void spawnAsteroids()
         {
             for (int i = 0; i < spawn_bubble_count; i++)
             {

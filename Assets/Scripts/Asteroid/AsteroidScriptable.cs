@@ -5,7 +5,7 @@ namespace Asteriod
     public class AsteroidScriptable : MonoBehaviour
     {
 
-        private Rigidbody rigidbody;
+        private new Rigidbody rigidbody;
         public float asteroid_speed = 3f;
         public int children;
         public GameObject childBubbles;
@@ -66,7 +66,6 @@ namespace Asteriod
             // when this bubble is shot then it should explode!!!!
             // if not at lower limit of liquid then fully destroy
             // else spawn children objects and destroy.. do we spawn these in a seperate controller?
-            Debug.Log("BOOM!");
 
             // if we are size 1, then we dont spawn children
             if (transform.localScale.x == 1)
