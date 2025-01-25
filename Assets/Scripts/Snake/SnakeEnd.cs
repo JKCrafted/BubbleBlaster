@@ -12,12 +12,14 @@ namespace Snake
         private int index;
         //Vector3 moveTo;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
+        [SerializeField] private AudioClip bubbleForm;
+        private AudioSource audioSource;
         void Start()
         {
             gameManager = FindFirstObjectByType<GameManager>();
             index = gameManager.snake.Count - 1;
             //float timer = 0;
-
+            audioSource = GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
