@@ -149,7 +149,10 @@ namespace Snake
         }
         private IEnumerator DestroySnake(int time, GameObject item)
         {
+            gameManager.runEnd = true;
+            gameManager.score = score;
             yield return new WaitForSeconds(0.5f * time);
+            gameManager.snake.Remove(item);
             Destroy(item);
         }
     }

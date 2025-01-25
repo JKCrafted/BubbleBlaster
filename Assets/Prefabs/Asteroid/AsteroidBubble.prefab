@@ -128,6 +128,9 @@ MonoBehaviour:
   points: 10
   rotation: 180
   radius: 150
+  material_mats:
+  - {fileID: 2100000, guid: 09b41e496f94bb245b088427b1619edb, type: 2}
+  - {fileID: 2100000, guid: 18b4d21e76e6eb343ba4be00a988913b, type: 2}
 --- !u!54 &-2579212637674307622
 Rigidbody:
   m_ObjectHideFlags: 0

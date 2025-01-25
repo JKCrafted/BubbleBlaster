@@ -1,4 +1,5 @@
 using UnityEngine;
+using BubbleWubble;
 
 namespace Flappy
 {
@@ -8,6 +9,7 @@ namespace Flappy
         [SerializeField] private float xBound = -15f;
         private FlappyGameManager gameManager;
         private SpawnManager spawnManager;
+
 
         void Start()
         {
