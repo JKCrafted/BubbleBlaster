@@ -31,7 +31,7 @@ namespace BubbleWubble
         private GameObject escapeMenu;
 
         [SerializeField]
-        private SUPERCharacterAIO characterRef;
+        private HUBPlayer characterRef;
 
         private CutsceneSystem cutsceneSystem;
 
@@ -112,9 +112,8 @@ namespace BubbleWubble
         /// <param name="isShown">True if shown, false if not.</param>
         public void ShowHideEscapeMenu(bool isShown)
         {
-            characterRef.enabled = !isShown;
             Cursor.lockState = isShown ? CursorLockMode.Confined : CursorLockMode.Locked;
-
+            characterRef.SetInControl(!isShown);
             Cursor.visible = isShown;
             escapeMenu.gameObject.SetActive(isShown);
         }
@@ -146,7 +145,7 @@ namespace BubbleWubble
         /// Get a reference to the hub player character.
         /// </summary>
         /// <returns>Ref to hub player character</returns>
-        public SUPERCharacterAIO GetHubCharacter()
+        public HUBPlayer GetHubCharacter()
         {
             return characterRef;
         }
