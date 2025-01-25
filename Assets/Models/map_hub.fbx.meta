@@ -3,7 +3,12 @@ guid: d9a426d3111371944bbacf612f5588cc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stepstop
+    second: {fileID: 2800000, guid: 4207c1e7a811b8a46b2fabcbf066ae35, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
