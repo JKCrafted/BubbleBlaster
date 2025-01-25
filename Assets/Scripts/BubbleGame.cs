@@ -5,6 +5,8 @@ public class BubbleGame : MonoBehaviour
 {
     public static BubbleGame Instance;
 
+    [SerializeField]
+    private CutsceneSystem cutsceneSystem;
 
 
     private void Awake()
@@ -17,5 +19,15 @@ public class BubbleGame : MonoBehaviour
     public void ReturnToHub(bool success = false)
     {
         SceneManager.LoadScene(0);
+
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            cutsceneSystem.PlayCutscene("cs_test");
+        }
     }
 }
