@@ -11,7 +11,6 @@ namespace Flappy
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
-
         }
 
         private void Flap()
@@ -29,10 +28,10 @@ namespace Flappy
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            Debug.Log("Game Over!");
-        }
+        // private void OnCollisionEnter(Collision collision)
+        // {
+        //     gameManager.GameOver();
+        // }
 
     }
 }
