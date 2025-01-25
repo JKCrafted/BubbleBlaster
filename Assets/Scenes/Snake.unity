@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snakeEnd: {fileID: 5029228164015373582, guid: dc25cc97657fd3442b0406f1cea6b24c, type: 3}
   speed: 100
+  maxHits: 5
 --- !u!1 &305780033
 GameObject:
   m_ObjectHideFlags: 0
