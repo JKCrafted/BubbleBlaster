@@ -85,6 +85,7 @@ namespace BubbleWubble
             yield return new WaitForSeconds(speed+0.1f);
             if (input == "scene_hub")
             {
+                Debug.Log("You won? " + winThreshold.ToString());
                 if (SceneManager.GetActiveScene().name.Contains("Snake")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold); }
                 else if (SceneManager.GetActiveScene().name.Contains("Asteroid")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Asteroids, winThreshold); }
                 else if (SceneManager.GetActiveScene().name.Contains("Flappy")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Flappy, winThreshold); }
@@ -95,8 +96,6 @@ namespace BubbleWubble
             }
             
         }
-
-
 
         // Update is called once per frame
         IEnumerator GameEndCoroutine()
