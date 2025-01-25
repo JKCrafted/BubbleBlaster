@@ -16,6 +16,8 @@ namespace BubbleWubble
         public bool winThreshold = false;
         public GameObject fade;
         public Color color = Color.white;
+        public float firstDelay = 5f;
+        public float secondDelay = 2f;
 
         public bool isEnding = false;
 
@@ -115,14 +117,14 @@ namespace BubbleWubble
 
             ending.gameObject.SetActive(true);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(firstDelay);
 
             Debug.Log("Past the point");
             
             score.gameObject.SetActive(false);
             ending.gameObject.SetActive(false);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(secondDelay);
             Cursor.lockState = true ? CursorLockMode.Confined : CursorLockMode.Locked;
 
             Cursor.visible = true;

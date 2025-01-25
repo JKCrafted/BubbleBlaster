@@ -41,11 +41,7 @@ namespace Asteriod
                 }
                 return;
             }
-            // if gameManager.gameOver == true player cannot move or shoot
-            if (gameManager.isGameOver() == true)
-            {
-                return;
-            }
+            
             playerMovement();
 
             if (Input.GetKeyDown(KeyCode.Space))
