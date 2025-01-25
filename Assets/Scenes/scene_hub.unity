@@ -1871,7 +1871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 2
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 0, g: 1, b: 0, a: 1}
   fade: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
 --- !u!95 &1385710302
 Animator:
