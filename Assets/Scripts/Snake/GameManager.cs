@@ -16,8 +16,8 @@ namespace Snake
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            snake.Add(FindObjectOfType<SnakeObject>().gameObject);
-            endState = FindObjectOfType<EndState>();
+            snake.Add(FindFirstObjectByType<SnakeObject>().gameObject);
+            endState = FindFirstObjectByType<EndState>();
             runEnd = false;
         }
 

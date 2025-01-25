@@ -21,10 +21,10 @@ namespace Snake
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            gameManager = FindObjectOfType<GameManager>();
-            spawnApple = FindObjectOfType<SpawnApple>();
+            gameManager = FindFirstObjectByType<GameManager>();
+            spawnApple = FindFirstObjectByType<SpawnApple>();
             rb = GetComponent<Rigidbody>();
-            scoreText = FindObjectOfType<TextMeshProUGUI>();
+            scoreText = FindFirstObjectByType<TextMeshProUGUI>();
             scoreText.text = "Score: " + score.ToString();
         }
 

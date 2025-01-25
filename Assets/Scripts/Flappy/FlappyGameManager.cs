@@ -12,7 +12,7 @@ public class FlappyGameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        endState = FindObjectOfType<EndState>();
+        endState = FindFirstObjectByType<EndState>();
         UpdateScore(0);
     }
 
