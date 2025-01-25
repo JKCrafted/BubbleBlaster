@@ -1,9 +1,7 @@
 namespace BubbleWubble
 {
     using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
 
     /// <summary>
@@ -34,11 +32,15 @@ namespace BubbleWubble
         }
         IEnumerator LoadingScene(Color colour, float speed)
         {
-            GameObject newFade = Instantiate(fade);
-            FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
-            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
-            fadeEffect.fadingSpeed = speed;
-            yield return new WaitForSeconds(speed+0.1f);
+            if (fade != null)
+            {
+                GameObject newFade = Instantiate(fade);
+                FadeEffect fadeEffect = fade.GetComponent<FadeEffect>();
+                fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
+                fadeEffect.fadingSpeed = speed;
+                yield return new WaitForSeconds(speed + 0.1f);
+            }
+
             BubbleGame.Instance.SwitchScene(sceneToLoad);
         }
 
