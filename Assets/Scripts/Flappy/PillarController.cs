@@ -45,12 +45,12 @@ namespace Flappy
                 block3.gameObject.SetActive(false);
             }
 
-
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             Debug.Log("Collided with pillar!");
+            gameManager.GameOverByCollision();
         }
 
         private void OnTriggerExit(Collider other)
