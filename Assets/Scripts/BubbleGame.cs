@@ -26,9 +26,6 @@ namespace BubbleWubble
             Asteroids
         }
 
-        [SerializeField]
-        [Tooltip("A ref to the HUB scene's custscene system")]
-        private CutsceneSystem cutsceneSystem;
 
         [SerializeField]
         private GameObject escapeMenu;
@@ -36,11 +33,16 @@ namespace BubbleWubble
         [SerializeField]
         private SUPERCharacterAIO characterRef;
 
+        private CutsceneSystem cutsceneSystem;
+
         /// <summary>
         /// Track what minigames we've tried/completed.
         /// </summary>
         private Dictionary<MinigameType, bool> attemptedMinigames = new Dictionary<MinigameType, bool>();
 
+        /// <summary>
+        /// Remember where the player first started so we can return them there.
+        /// </summary>
         private Vector3 playerInitialPos;
 
         /// <summary>
@@ -156,6 +158,11 @@ namespace BubbleWubble
         public Dictionary<MinigameType, bool> GetAttemptedMinigames()
         {
             return attemptedMinigames;
+        }
+
+        public void LinkCutsceneSystem(CutsceneSystem sys)
+        {
+            cutsceneSystem = sys;
         }
     }
 }
