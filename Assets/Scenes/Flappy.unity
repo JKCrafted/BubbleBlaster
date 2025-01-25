@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe566105b9f7fd5428aece191524f030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarPrefab: {fileID: 2937750060200505772, guid: 730b9c76b5be3da489d820302a7ab634, type: 3}
+  pillarPrefab: {fileID: 2937750060200505772, guid: 55846e88f7edd424fb43096a09e8c872, type: 3}
   spawnInterval: 4
   startXPosition: 15
   yPosition: 0
