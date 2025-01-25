@@ -30,6 +30,7 @@ namespace BubbleWubble
                 }
             }
         }
+
         IEnumerator LoadingScene(Color colour, float speed)
         {
             GameObject newFade = Instantiate(fade);
