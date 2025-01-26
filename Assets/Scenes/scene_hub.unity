@@ -3541,6 +3541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameComplete: 0
+  gameStarted: 0
   escapeMenu: {fileID: 322491978}
   characterRef: {fileID: 1786934129}
 --- !u!114 &1786934129 stripped
@@ -3800,7 +3801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.1
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3808,7 +3809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -70.74
+      value: -59.9
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalRotation.w

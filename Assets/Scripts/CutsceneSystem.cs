@@ -37,6 +37,12 @@ namespace BubbleWubble
         private void Start()
         {
             BubbleGame.Instance.LinkCutsceneSystem(this);
+
+            if (BubbleGame.Instance.gameStarted == false)
+            {
+                BubbleGame.Instance.gameStarted = true;
+                PlayCutscene("cs_intro");
+            }
         }
 
         public void PlayEndingCutscene()

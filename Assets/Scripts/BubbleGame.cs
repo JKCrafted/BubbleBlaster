@@ -11,6 +11,8 @@ namespace BubbleWubble
     {
         public bool gameComplete = false;
 
+        public bool gameStarted = false;
+
         /// <summary>
         /// Static instance to the game manager.
         /// </summary>
@@ -110,11 +112,6 @@ namespace BubbleWubble
         /// </summary>
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                cutsceneSystem.PlayCutscene("cs_intro");
-            }
-
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ShowHideEscapeMenu(!escapeMenu.gameObject.activeSelf);
