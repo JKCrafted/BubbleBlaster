@@ -22,6 +22,7 @@ namespace BubbleWubble
         public Color color = Color.white;
         public float firstDelay = 5f;
         public float secondDelay = 2f;
+        private bool timerRunning = false;
 
         public bool isEnding = false;
 
@@ -49,7 +50,6 @@ namespace BubbleWubble
                 else if (transform.GetChild(i).gameObject.tag.Contains("EndingTimer"))
                 {
                     timer = item.GetComponent<TextMeshProUGUI>();
-
                 }
             }
 
@@ -63,7 +63,9 @@ namespace BubbleWubble
 
         void Update() 
         {
-            if (timerEnabled = true) {
+            if (timerEnabled = true && !timerRunning) 
+            {
+                timer.gameObject.SetActive(true);
                 timerEnabled = false;
                 timerLeft = timerLength;
                 StartCoroutine(RunTimer());
@@ -73,11 +75,12 @@ namespace BubbleWubble
 
         public IEnumerator RunTimer()
         {
+            timerRunning = true;
             if (timerLeft > 0)
             {
                 timer.text = "Time Remaining: " + timerLeft.ToString() +"s";
-                yield return new WaitForSeconds(1);
-                timerLeft--;
+                yield return new WaitForSeconds(1f);
+                timerLeft-=1;
                 StartCoroutine(RunTimer());
             }
             else
