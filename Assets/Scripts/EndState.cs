@@ -13,6 +13,10 @@ namespace BubbleWubble
         private TextMeshProUGUI ending;
         public TextMeshProUGUI score;
         private TextMeshProUGUI replay;
+        private TextMeshProUGUI timer;
+        public bool timerEnabled = false;
+        public int timerLength = 0;
+        public int timerLeft;
         public bool winThreshold = false;
         public GameObject fade;
         public Color color = Color.white;
@@ -25,10 +29,10 @@ namespace BubbleWubble
         void Start()
         {
 
-            Debug.Log("Running");
+            //Debug.Log("Running");
             for (int i = 0; i < transform.childCount; i++)
             {
-                Debug.Log(i);
+                //Debug.Log(i);
                 GameObject item = transform.GetChild(i).gameObject;
                 if (item.tag.Contains("EndingScore"))
                 {
@@ -42,6 +46,12 @@ namespace BubbleWubble
                 {
                     replay = item.GetComponent<TextMeshProUGUI>();
                 }
+                else if (transform.GetChild(i).gameObject.tag.Contains("EndingTimer") && timerEnabled)
+                {
+                    timer = item.GetComponent<TextMeshProUGUI>();
+                    timerLeft = timerLength;
+                    StartCoroutine(RunTimer());
+                }
             }
 
 
@@ -52,9 +62,27 @@ namespace BubbleWubble
 
         }
 
+
+        public IEnumerator RunTimer()
+        {
+            if (timerLeft > 0)
+            {
+                timer.text = "Time Remaining: " + timerLeft.ToString() +"s";
+                yield return new WaitForSeconds(1);
+                timerLeft--;
+                StartCoroutine(RunTimer());
+            }
+            else
+            {
+                GameEnd();
+            }
+        }
+
+
+
         public void GameEnd()
         {
-            Debug.Log("Game Over1!");
+            //Debug.Log("Game Over1!");
 
             if (isEnding == false)
             {
@@ -82,12 +110,12 @@ namespace BubbleWubble
             GameObject newFade = Instantiate(fade);
             newFade.transform.SetParent(transform);
             FadeEffect fadeEffect = newFade.GetComponent<FadeEffect>();
-            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;
+            fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;   
             fadeEffect.fadingSpeed = speed;
             yield return new WaitForSeconds(speed+0.1f);
             if (input == "scene_hub")
             {
-                Debug.Log("You won? " + winThreshold.ToString());
+                //Debug.Log("You won? " + winThreshold.ToString());
                 if (SceneManager.GetActiveScene().name.Contains("Snake")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Snake, winThreshold); }
                 else if (SceneManager.GetActiveScene().name.Contains("Asteroid")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Asteroids, winThreshold); }
                 else if (SceneManager.GetActiveScene().name.Contains("Flappy")) { BubbleGame.Instance.ReturnToHub(BubbleGame.MinigameType.Flappy, winThreshold); }
@@ -103,7 +131,7 @@ namespace BubbleWubble
         IEnumerator GameEndCoroutine()
         {
             isEnding = true;
-            Debug.Log("Entered coroutine");
+            //Debug.Log("Entered coroutine");
 
             if (winThreshold)
             {
@@ -118,7 +146,7 @@ namespace BubbleWubble
 
             yield return new WaitForSeconds(firstDelay);
 
-            Debug.Log("Past the point");
+            //Debug.Log("Past the point");
             
             score.gameObject.SetActive(false);
             ending.gameObject.SetActive(false);
