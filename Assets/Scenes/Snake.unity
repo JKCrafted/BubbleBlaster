@@ -272,7 +272,7 @@ MonoBehaviour:
   snakeEnd: {fileID: 5029228164015373582, guid: dc25cc97657fd3442b0406f1cea6b24c, type: 3}
   speed: 100
   audioSource: {fileID: 0}
-  bubbleForm: {fileID: 8300000, guid: 26b7bb73b296aa3448ba1d2858777f11, type: 3}
+  bubblePop: {fileID: 8300000, guid: 12e41e00cd9b9ac4fa5c2133a033a611, type: 3}
   snakeEat:
   - {fileID: 8300000, guid: bd3f779a4db9909479899f8cbabcc1e5, type: 3}
   - {fileID: 8300000, guid: efe0604116e34584c831b104cfa52f5e, type: 3}
