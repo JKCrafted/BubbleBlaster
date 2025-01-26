@@ -24,6 +24,7 @@ namespace BubbleWubble
         public float secondDelay = 2f;
         private bool timerRunning = false;
 
+        
         public bool isEnding = false;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,7 +64,7 @@ namespace BubbleWubble
 
         void Update() 
         {
-            if (timerEnabled = true && !timerRunning) 
+            if (timerEnabled == true && !timerRunning) 
             {
                 timer.gameObject.SetActive(true);
                 timerEnabled = false;
