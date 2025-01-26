@@ -46,11 +46,10 @@ namespace BubbleWubble
                 {
                     replay = item.GetComponent<TextMeshProUGUI>();
                 }
-                else if (transform.GetChild(i).gameObject.tag.Contains("EndingTimer") && timerEnabled)
+                else if (transform.GetChild(i).gameObject.tag.Contains("EndingTimer"))
                 {
                     timer = item.GetComponent<TextMeshProUGUI>();
-                    timerLeft = timerLength;
-                    StartCoroutine(RunTimer());
+
                 }
             }
 
@@ -60,6 +59,15 @@ namespace BubbleWubble
            // ending = GameObject.FindWithTag("EndingEnding").GetComponent<TextMeshProUGUI>();
             //replay = GameObject.FindWithTag("EndingReplay").GetComponent<TextMeshProUGUI>();
 
+        }
+
+        void Update() 
+        {
+            if (timerEnabled = true) {
+                timerEnabled = false;
+                timerLeft = timerLength;
+                StartCoroutine(RunTimer());
+            }
         }
 
 
