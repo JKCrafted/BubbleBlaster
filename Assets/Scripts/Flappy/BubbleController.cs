@@ -8,6 +8,9 @@ namespace Flappy
         private Rigidbody rigidbody;
         [SerializeField] private float force;
 
+        public AudioSource audio_source;
+        public AudioClip flappy_falling_sound;
+
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
@@ -25,6 +28,11 @@ namespace Flappy
             if (Input.GetKey(KeyCode.Space))
             {
                 Flap();
+                // audio_source.PlayOneShot(flappy_rising_sound);
+            }
+            else
+            {
+                audio_source.PlayOneShot(flappy_falling_sound);
             }
         }
 
