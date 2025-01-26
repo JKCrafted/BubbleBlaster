@@ -44,6 +44,12 @@ namespace BubbleWubble
             PlayCutscene(doorUnlockedCutscene);
         }
 
+        public void EndTheGame()
+        {
+            Application.Quit();
+        }
+
+
         /// <summary>
         /// Play a minigame's finished cutscene.
         /// </summary>
