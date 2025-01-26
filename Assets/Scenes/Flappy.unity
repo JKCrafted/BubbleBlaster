@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785014252362965555, guid: eea7b8b54649eac45809af69b8750ad7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b356eafa110dce42865c9e778ad9f14, type: 2}
     - target: {fileID: 1684688170103782272, guid: eea7b8b54649eac45809af69b8750ad7, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -415,9 +419,9 @@ MonoBehaviour:
   scoreUI: {fileID: 0}
   pillarSpeed: 1
   passingScore: 15
-  audio_source: {fileID: 1580021082}
-  flappy_score_sound: {fileID: 8300000, guid: fd300a1c6b9e6814f871b4610b5ae8c7, type: 3}
-  flappy_pop_sound: {fileID: 8300000, guid: 03ff01d277f77cf49948417200dfde2f, type: 3}
+  audio_source: {fileID: 0}
+  flappy_score_sound: {fileID: 0}
+  flappy_pop_sound: {fileID: 0}
 --- !u!4 &187837821
 Transform:
   m_ObjectHideFlags: 0
@@ -430,8 +434,7 @@ Transform:
   m_LocalPosition: {x: 0.36246732, y: 3.100283, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1580021083}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &270096877
@@ -956,6 +959,10 @@ PrefabInstance:
     - target: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
       propertyPath: m_Name
       value: Flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7220353042376142177, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
       propertyPath: color.b
