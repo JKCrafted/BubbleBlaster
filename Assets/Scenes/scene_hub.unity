@@ -1463,7 +1463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 1
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 1, g: 1, b: 0, a: 1}
   fade: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
 --- !u!95 &940492428
 Animator:
@@ -2646,7 +2646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 2
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 1}
   fade: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
 --- !u!95 &1385710302
 Animator:
@@ -2794,7 +2794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 3
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 1, g: 0, b: 0, a: 1}
   fade: {fileID: 5716518874996004991, guid: a89190fcbaf08a24997cd00b87524b6c, type: 3}
 --- !u!95 &1485813196
 Animator:
@@ -3603,11 +3603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.40791
+      value: -16.097
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -60.276688
+      value: -58.02
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3636,10 +3636,6 @@ PrefabInstance:
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7940649371727976942, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
-      propertyPath: lookSensitivity
-      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
