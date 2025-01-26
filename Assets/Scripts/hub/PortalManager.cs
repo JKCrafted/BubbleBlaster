@@ -17,6 +17,11 @@ public class PortalManager : MonoBehaviour
     {
         var attemptedMinigames = BubbleGame.Instance.GetAttemptedMinigames();
 
+        if (BubbleGame.Instance.gameComplete)
+        {
+            cutsceneSystem.PlayEndingCutscene();
+        }
+
         foreach (var minigame in attemptedMinigames)
         {
             if (minigame.Value == true)
@@ -25,7 +30,10 @@ public class PortalManager : MonoBehaviour
                 {
                     minigamePortals[minigame.Key].gameObject.SetActive(false);
 
-                    cutsceneSystem.PlayMinigameFinishedCutscene(minigame.Key);
+                    if (!BubbleGame.Instance.gameComplete)
+                    {
+                        cutsceneSystem.PlayMinigameFinishedCutscene(minigame.Key);
+                    }
                 }
             }
         }

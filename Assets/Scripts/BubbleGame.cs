@@ -9,6 +9,8 @@ namespace BubbleWubble
     /// </summary>
     public class BubbleGame : MonoBehaviour
     {
+        public bool gameComplete = false;
+
         /// <summary>
         /// Static instance to the game manager.
         /// </summary>
@@ -42,6 +44,8 @@ namespace BubbleWubble
         /// Remember where the player first started so we can return them there.
         /// </summary>
         private Vector3 playerInitialPos;
+
+        private int gamesComplete = 0;
 
         /// <summary>
         /// Awake, set up instance and make this not die when scene changes.
@@ -87,6 +91,18 @@ namespace BubbleWubble
                     attemptedMinigames[fromMinigame] = success;
                 }
             }
+
+            int completedGames = 0;
+
+            foreach(var gameStatus in attemptedMinigames)
+            {
+                if (gameStatus.Value == true)
+                {
+                    completedGames++;
+                }
+            }
+
+            gameComplete = completedGames >= 3;
         }
 
         /// <summary>
