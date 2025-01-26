@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed = 10f;
     public float enemyLifeLength = 30f;
 
+    public AudioClip shooting_sound;
+    public AudioSource audio_source;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +27,7 @@ public class EnemyController : MonoBehaviour
 
         if (Time.time > delay)
         {
+            audio_source.PlayOneShot(shooting_sound);
             GameObject gun = GameObject.FindWithTag("EnemyShipGun");
             Instantiate(bullet, gun.transform.position, gun.transform.rotation);
             delay = Time.time + 2f;
