@@ -9,11 +9,13 @@ public class FlappyGameManager : MonoBehaviour
     [SerializeField] private GameObject scoreUI;
     public float pillarSpeed = 1f;
     private EndState endState;
-    public int passingScore = 50;
+    public int passingScore = 15;
 
     public AudioSource audio_source;
     public AudioClip flappy_score_sound;
     public AudioClip flappy_pop_sound;
+
+    public GameObject Bubble;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,13 +45,14 @@ public class FlappyGameManager : MonoBehaviour
     public void GameOver()
     {
 
+        Destroy(Bubble);
+        audio_source.PlayOneShot(flappy_pop_sound);
         if (playerScore >= passingScore)
         {
             Debug.Log("You Win!");
             endState.winThreshold = true;
         }
         Debug.Log("Game Over!");
-        audio_source.PlayOneShot(flappy_pop_sound);
         endState.GameEnd();
     }
 
