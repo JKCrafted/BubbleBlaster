@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,9 +64,11 @@ public class HUBPlayer : MonoBehaviour
 
             playerCam.transform.rotation = Quaternion.Euler(camRotation);
 
+            
             Vector3 forwardMotion = transform.forward * moveInputs.y * moveSpeed;
 
             Vector3 strafeMotion = transform.right * moveInputs.x * moveSpeed;
+
 
             if (isSprinting)
             {

@@ -76,6 +76,7 @@ namespace BubbleWubble
 
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                BubbleGame.Instance.GetHubCharacter().SetInControl(true);
 
                 if (!attemptedMinigames.ContainsKey(fromMinigame))
                 {
