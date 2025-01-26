@@ -9,7 +9,7 @@ public class FlappyGameManager : MonoBehaviour
     [SerializeField] private GameObject scoreUI;
     public float pillarSpeed = 1f;
     private EndState endState;
-    public int passingScore = 50;
+    public int passingScore = 15;
 
     public AudioSource audio_source;
     public AudioClip flappy_score_sound;
