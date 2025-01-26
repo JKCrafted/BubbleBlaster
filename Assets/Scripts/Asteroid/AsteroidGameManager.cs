@@ -16,11 +16,20 @@ namespace Asteriod
         bool enemyShipSpawned = false;
 
         public GameObject shield_ui;
+        public AudioSource audio_source;
+        public AudioClip ambient_noise;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             endState = FindFirstObjectByType<EndState>();
+            audio_source.clip = ambient_noise;
+            audio_source.Play();
+
+            
+
+            endState.timerLength = (int)gameTime;
+            endState.timerEnabled = true;
 
             updateScore(0);
         }
@@ -36,7 +45,7 @@ namespace Asteriod
 
             gameTime -= Time.deltaTime;
 
-            if (timer_ui != null)
+            if (timer_ui == null)
             {
                 timer_ui.GetComponent<TMPro.TextMeshProUGUI>().text = "Time: " + gameTime;
             }
