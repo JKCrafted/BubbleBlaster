@@ -84,7 +84,7 @@ namespace BubbleWubble
                 timerLeft-=1;
                 StartCoroutine(RunTimer());
             }
-            else
+            else if (timerLeft <= 0)
             {
                 GameEnd();
             }
