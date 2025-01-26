@@ -112,7 +112,7 @@ namespace BubbleWubble
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                cutsceneSystem.PlayCutscene("cs_test");
+                cutsceneSystem.PlayCutscene("cs_intro");
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
