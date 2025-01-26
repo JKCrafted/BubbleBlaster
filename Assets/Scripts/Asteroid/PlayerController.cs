@@ -34,11 +34,7 @@ namespace Asteriod
 
         void Update()
         {   
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                gameManager.takeDamage(1);
 
-            }
             if (showing_instructions)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
