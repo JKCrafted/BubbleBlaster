@@ -25,11 +25,6 @@ namespace Asteriod
             audio_source.clip = ambient_noise;
             audio_source.Play();
 
-
-            Debug.Log(Mathf.RoundToInt(120f));
-            endState.timerLength = Mathf.RoundToInt(120f);
-            endState.timerEnabled = true;
-
             updateScore(0);
         }
 
@@ -128,6 +123,11 @@ namespace Asteriod
 
             // spawn new asteroids
             bubbleMachine.GetComponent<BubbleMachine>().spawnAsteroids();
+
+            Debug.Log(Mathf.RoundToInt(120f));
+            endState.timerLength = Mathf.RoundToInt(120f);
+            endState.timerEnabled = true;
+
         }
 
         public bool isGameWon() {
@@ -136,6 +136,11 @@ namespace Asteriod
             } else {
                 return false;
             }
+        }
+
+        public void playSound(AudioClip sound)
+        {
+            audio_source.PlayOneShot(sound);
         }
     }
 }

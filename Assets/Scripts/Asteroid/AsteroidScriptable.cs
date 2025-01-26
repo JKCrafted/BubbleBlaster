@@ -17,6 +17,9 @@ namespace Asteriod
 
         public Material[] material_mats;
 
+        public AudioClip explosion_sound;
+        public AudioSource audio_source;
+
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -83,7 +86,9 @@ namespace Asteriod
             // when this bubble is shot then it should explode!!!!
             // if not at lower limit of liquid then fully destroy
             // else spawn children objects and destroy.. do we spawn these in a seperate controller?
-
+            AudioSource.PlayClipAtPoint(explosion_sound, transform.position);
+            gameManager.playSound(explosion_sound);
+            
             // Player gets points for each bubble destroyed
             if (gameManager != null) {
                 gameManager.updateScore(points);
