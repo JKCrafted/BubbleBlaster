@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc1fa29851728b4c900b242142a0bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivity: 15
+  lookSensitivity: 28
   characterController: {fileID: 7192247446246613787}
   playerCam: {fileID: 3995462389012426153}
   camExtents: 90
