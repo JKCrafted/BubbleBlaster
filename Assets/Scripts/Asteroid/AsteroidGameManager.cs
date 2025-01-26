@@ -8,7 +8,6 @@ namespace Asteriod
         public int player_score;
         public GameObject score_ui;
         public float gameTime = 60f; // Set the game time to 60 seconds
-        public GameObject timer_ui; // UI element to display when the player wins
         public int shields = 1;
         private EndState endState;
 
@@ -16,11 +15,20 @@ namespace Asteriod
         bool enemyShipSpawned = false;
 
         public GameObject shield_ui;
+        public AudioSource audio_source;
+        public AudioClip ambient_noise;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             endState = FindFirstObjectByType<EndState>();
+            audio_source.clip = ambient_noise;
+            audio_source.Play();
+
+
+            Debug.Log(Mathf.RoundToInt(120f));
+            endState.timerLength = Mathf.RoundToInt(120f);
+            endState.timerEnabled = true;
 
             updateScore(0);
         }
@@ -36,10 +44,6 @@ namespace Asteriod
 
             gameTime -= Time.deltaTime;
 
-            if (timer_ui != null)
-            {
-                timer_ui.GetComponent<TMPro.TextMeshProUGUI>().text = "Time: " + gameTime;
-            }
 
             if (gameTime <= 0)
             {

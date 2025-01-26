@@ -21,6 +21,9 @@ namespace BubbleWubble
         [Tooltip("Link minigame enum to animation string.")]
         private SerializedDictionary<BubbleGame.MinigameType, string> minigameCutscenes = new SerializedDictionary<BubbleGame.MinigameType, string>();
 
+        [SerializeField]
+        private string doorUnlockedCutscene;
+
         /// <summary>
         /// Remember what cutscenes we've played
         /// </summary>
@@ -35,6 +38,17 @@ namespace BubbleWubble
         {
             BubbleGame.Instance.LinkCutsceneSystem(this);
         }
+
+        public void PlayEndingCutscene()
+        {
+            PlayCutscene(doorUnlockedCutscene);
+        }
+
+        public void EndTheGame()
+        {
+            Application.Quit();
+        }
+
 
         /// <summary>
         /// Play a minigame's finished cutscene.

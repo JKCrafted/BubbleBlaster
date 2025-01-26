@@ -29,6 +29,7 @@ namespace Snake
 
         [SerializeField]
         private int maxHits = 1;
+        [SerializeField] GameObject startScreen;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -41,6 +42,7 @@ namespace Snake
             running = false;
             StartCoroutine(TitleScreen());
             audioSource = GetComponent<AudioSource>();
+            
         }
 
         // Update is called once per frame
@@ -214,6 +216,8 @@ namespace Snake
         private IEnumerator TitleScreen()
         {
             yield return new WaitForSeconds(5f);
+            startScreen.SetActive(false);
+            yield return new WaitForSeconds(1f);
             running = true;
         }
     }
