@@ -18,8 +18,11 @@ namespace BubbleWubble
             {
                 if (other.tag.Equals("Player"))
                 {
+                    collected = true;
+                    other.transform.GetChild(0).gameObject.AddComponent<GunRaycast>();
                     bubbleGunObject.SetActive(false);
                     cutsceneSystem.PlayCutscene("cs_gunpickedup");
+                    other.transform.GetChild(1).gameObject.SetActive(true);
                 }
             }
         }

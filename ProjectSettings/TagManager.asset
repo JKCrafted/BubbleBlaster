@@ -16,6 +16,7 @@ TagManager:
   - EnemyShipBullet
   - EnemyShipGun
   - EndingTimer
+  - BadGuy
   layers:
   - Default
   - TransparentFX

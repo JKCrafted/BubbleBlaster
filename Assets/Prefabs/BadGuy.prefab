@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8948583878199263564}
   m_Layer: 0
   m_Name: BadGuy
-  m_TagString: Untagged
+  m_TagString: BadGuy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,10 @@ PrefabInstance:
     - target: {fileID: 265181648054917441, guid: c2e72fce94391de4590bc7a665d4ca59, type: 3}
       propertyPath: m_Name
       value: MCH_EyeLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 265181648054917441, guid: c2e72fce94391de4590bc7a665d4ca59, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
       objectReference: {fileID: 0}
     - target: {fileID: 4839929782644614515, guid: c2e72fce94391de4590bc7a665d4ca59, type: 3}
       propertyPath: m_LocalScale.x
@@ -123,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 265181648054917441, guid: 34aafa4db18560d49ba6aa91965604a7, type: 3}
       propertyPath: m_Name
       value: MCH_MouthOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 265181648054917441, guid: 34aafa4db18560d49ba6aa91965604a7, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
       objectReference: {fileID: 0}
     - target: {fileID: 4839929782644614515, guid: 34aafa4db18560d49ba6aa91965604a7, type: 3}
       propertyPath: m_LocalScale.x
@@ -202,6 +210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MCH_MouthClose
       objectReference: {fileID: 0}
+    - target: {fileID: 265181648054917441, guid: b7346532dbf5f87458ed7fc8b8a4e0fc, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
+      objectReference: {fileID: 0}
     - target: {fileID: 4839929782644614515, guid: b7346532dbf5f87458ed7fc8b8a4e0fc, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.17799002
@@ -275,6 +287,10 @@ PrefabInstance:
     - target: {fileID: 265181648054917441, guid: 3574b3f4351fb524f87edd4de0c2b4ee, type: 3}
       propertyPath: m_Name
       value: MCH_EyeRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 265181648054917441, guid: 3574b3f4351fb524f87edd4de0c2b4ee, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
       objectReference: {fileID: 0}
     - target: {fileID: 4839929782644614515, guid: 3574b3f4351fb524f87edd4de0c2b4ee, type: 3}
       propertyPath: m_LocalScale.x
@@ -390,6 +406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MCH_HeadSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38cfdcaff2be9cd43830d2fcba9fe1d9, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -411,6 +431,10 @@ PrefabInstance:
     - target: {fileID: 265181648054917441, guid: dbfa5bec0ba883d4b91d70fe5a1e4efd, type: 3}
       propertyPath: m_Name
       value: MCH_EyebrowRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 265181648054917441, guid: dbfa5bec0ba883d4b91d70fe5a1e4efd, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
       objectReference: {fileID: 0}
     - target: {fileID: 4839929782644614515, guid: dbfa5bec0ba883d4b91d70fe5a1e4efd, type: 3}
       propertyPath: m_LocalScale.x
@@ -485,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 265181648054917441, guid: 6ee79cc8e0f2d264ea90e06e72bd6f6a, type: 3}
       propertyPath: m_Name
       value: MCH_Eyebrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 265181648054917441, guid: 6ee79cc8e0f2d264ea90e06e72bd6f6a, type: 3}
+      propertyPath: m_TagString
+      value: BadGuy
       objectReference: {fileID: 0}
     - target: {fileID: 4839929782644614515, guid: 6ee79cc8e0f2d264ea90e06e72bd6f6a, type: 3}
       propertyPath: m_LocalScale.x

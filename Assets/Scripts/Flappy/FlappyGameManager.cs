@@ -36,7 +36,7 @@ public class FlappyGameManager : MonoBehaviour
         playerScore += score;
         // update ui textmesh pro
 
-        scoreUI.GetComponent<TextMeshProUGUI>().text = "Score: " + playerScore;
+        scoreUI.GetComponent<TextMeshProUGUI>().text = "Score: " + playerScore.ToString();
 
     }
 

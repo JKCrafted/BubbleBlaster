@@ -32,7 +32,7 @@ namespace Flappy
             }
             else
             {
-                audio_source.PlayOneShot(flappy_falling_sound);
+                // audio_source.PlayOneShot(flappy_falling_sound);
             }
         }
 

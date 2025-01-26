@@ -199,14 +199,14 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &2369315046319382906
+--- !u!1102 &2881366605582410042
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: cs_asteroidsfinished
+  m_Name: cs_intro 0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -219,7 +219,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8144a3404ef35af40b1fd7b1176ed73f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1c1f309624d1cfc49aec17422757f426, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -331,7 +331,7 @@ AnimatorStateMachine:
     m_State: {fileID: -2264953552383510031}
     m_Position: {x: 775, y: 315, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 2369315046319382906}
+    m_State: {fileID: 2881366605582410042}
     m_Position: {x: 810, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5401098261984861844}
