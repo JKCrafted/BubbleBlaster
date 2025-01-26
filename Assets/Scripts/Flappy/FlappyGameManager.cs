@@ -34,12 +34,13 @@ public class FlappyGameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over!");
 
         if (playerScore >= passingScore)
         {
+            Debug.Log("You Win!");
             endState.winThreshold = true;
         }
+        Debug.Log("Game Over!");
         endState.GameEnd();
     }
 
