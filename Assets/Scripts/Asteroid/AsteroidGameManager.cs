@@ -12,7 +12,7 @@ namespace Asteriod
         private EndState endState;
 
         public GameObject enemyShip;
-        bool enemyShipSpawned = false;
+        public bool enemyShipSpawned = false;
 
         public GameObject shield_ui;
         public AudioSource audio_source;
@@ -46,9 +46,9 @@ namespace Asteriod
                 checkWinCondition();
             }
 
-            if (gameTime > 1 && gameTime <= 30 && enemyShipSpawned == false) {
+            if (gameTime > 1 && gameTime <= 60 && enemyShipSpawned == false) {
                 
-                Instantiate(enemyShip, new Vector3(150, 50, 50), Quaternion.identity);
+                Instantiate(enemyShip, new Vector3(Random.Range(-150, 150), Random.Range(-150, 150), Random.Range(-150, 150)), Quaternion.identity);
                 enemyShipSpawned = true;
             }
 

@@ -3796,7 +3796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1358605686668918414, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3092869122970021303, guid: 074be7abd0bf0784387a69eba399320f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3911,6 +3911,10 @@ PrefabInstance:
     - target: {fileID: 4523636268650497219, guid: 6f57745cab049484db489cd342c54749, type: 3}
       propertyPath: m_Name
       value: DoorAndWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523636268650497219, guid: 6f57745cab049484db489cd342c54749, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5359585580723673425, guid: 6f57745cab049484db489cd342c54749, type: 3}
       propertyPath: m_LocalPosition.x
