@@ -10,6 +10,11 @@ public class FlappyGameManager : MonoBehaviour
     public float pillarSpeed = 1f;
     private EndState endState;
     public int passingScore = 50;
+
+    public AudioSource audio_source;
+    public AudioClip flappy_score_sound;
+    public AudioClip flappy_pop_sound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,10 +31,13 @@ public class FlappyGameManager : MonoBehaviour
 
     public void UpdateScore(int score)
     {
+        audio_source.PlayOneShot(flappy_score_sound);
+
         playerScore += score;
         // update ui textmesh pro
 
         scoreUI.GetComponent<TextMeshProUGUI>().text = "Score: " + playerScore;
+
     }
 
     public void GameOver()
@@ -41,6 +49,7 @@ public class FlappyGameManager : MonoBehaviour
             endState.winThreshold = true;
         }
         Debug.Log("Game Over!");
+        audio_source.PlayOneShot(flappy_pop_sound);
         endState.GameEnd();
     }
 
