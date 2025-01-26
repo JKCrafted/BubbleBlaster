@@ -280,6 +280,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0df041ad579e3e640846649fa1334a30, type: 3}
   moveNoise: {fileID: 8300000, guid: 2298230c5894e904f88951e0e04cf2fd, type: 3}
   maxHits: 5
+  startScreen: {fileID: 1959288615}
 --- !u!82 &172381704
 AudioSource:
   m_ObjectHideFlags: 0

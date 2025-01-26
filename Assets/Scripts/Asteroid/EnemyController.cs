@@ -1,44 +1,51 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+namespace Asteriod
 {
-    public GameObject player;
-    public GameObject bullet;
-    public float speed = 5f;
-    public float delay = 2f;
-    public float bulletSpeed = 10f;
-    public float enemyLifeLength = 30f;
-
-    public AudioClip shooting_sound;
-    public AudioSource audio_source;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class EnemyController : MonoBehaviour
     {
-        player = GameObject.Find("BubbleShip");
-        Debug.Log("BubbleShip: " + player);
-    }
+        public GameObject player;
+        public GameObject bullet;
+        public float speed = 5f;
+        public float delay = 2f;
+        public float bulletSpeed = 10f;
+        public float enemyLifeLength = 30f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.LookAt(player.transform);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        public AudioClip shooting_sound;
+        public AudioSource audio_source;
 
-        if (Time.time > delay)
+        private AsteroidGameManager gameManager;
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            audio_source.PlayOneShot(shooting_sound);
-            GameObject gun = GameObject.FindWithTag("EnemyShipGun");
-            Instantiate(bullet, gun.transform.position, gun.transform.rotation);
-            delay = Time.time + 2f;
+            player = GameObject.Find("BubbleShip");
+            Debug.Log("BubbleShip: " + player);
+            gameManager = GameObject.Find("AsteroidGameManager").GetComponent<AsteroidGameManager>();
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(gameObject);
+            transform.LookAt(player.transform);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+            if (Time.time > delay)
+            {
+                audio_source.PlayOneShot(shooting_sound);
+                GameObject gun = GameObject.FindWithTag("EnemyShipGun");
+                Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+                delay = Time.time + 2f;
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Bullet")
+            {
+                gameManager.enemyShipSpawned = false;
+                Destroy(gameObject);
+            }
         }
     }
 }
