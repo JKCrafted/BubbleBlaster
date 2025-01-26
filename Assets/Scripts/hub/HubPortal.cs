@@ -34,6 +34,7 @@ namespace BubbleWubble
         IEnumerator LoadingScene(Color colour, float speed)
         {
             GameObject newFade = Instantiate(fade);
+            BubbleGame.Instance.GetHubCharacter().SetInControl(false);
             newFade.transform.SetParent(transform);
             FadeEffect fadeEffect = newFade.GetComponent<FadeEffect>();
             fadeEffect.gameObject.transform.GetChild(0).GetComponent<Image>().color = colour;

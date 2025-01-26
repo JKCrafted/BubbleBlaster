@@ -90,8 +90,6 @@ public class HUBPlayer : MonoBehaviour
     public void OnLook(InputValue value)
     {
         lookInputs = value.Get<Vector2>();
-
-        Debug.Log(lookInputs);
     }
 
     // 'Look' input action has been triggered.
