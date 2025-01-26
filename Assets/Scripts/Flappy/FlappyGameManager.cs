@@ -46,13 +46,13 @@ public class FlappyGameManager : MonoBehaviour
     {
 
         Destroy(Bubble);
+        audio_source.PlayOneShot(flappy_pop_sound);
         if (playerScore >= passingScore)
         {
             Debug.Log("You Win!");
             endState.winThreshold = true;
         }
         Debug.Log("Game Over!");
-        audio_source.PlayOneShot(flappy_pop_sound);
         endState.GameEnd();
     }
 
