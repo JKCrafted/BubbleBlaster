@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785014252362965555, guid: eea7b8b54649eac45809af69b8750ad7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b356eafa110dce42865c9e778ad9f14, type: 2}
     - target: {fileID: 1684688170103782272, guid: eea7b8b54649eac45809af69b8750ad7, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -415,6 +419,9 @@ MonoBehaviour:
   scoreUI: {fileID: 0}
   pillarSpeed: 1
   passingScore: 15
+  audio_source: {fileID: 0}
+  flappy_score_sound: {fileID: 0}
+  flappy_pop_sound: {fileID: 0}
 --- !u!4 &187837821
 Transform:
   m_ObjectHideFlags: 0
