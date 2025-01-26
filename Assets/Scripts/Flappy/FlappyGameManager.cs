@@ -15,6 +15,8 @@ public class FlappyGameManager : MonoBehaviour
     public AudioClip flappy_score_sound;
     public AudioClip flappy_pop_sound;
 
+    public GameObject Bubble;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +45,7 @@ public class FlappyGameManager : MonoBehaviour
     public void GameOver()
     {
 
+        Destroy(Bubble);
         if (playerScore >= passingScore)
         {
             Debug.Log("You Win!");

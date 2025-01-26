@@ -416,12 +416,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: 0
-  scoreUI: {fileID: 0}
+  scoreUI: {fileID: 1183221226}
   pillarSpeed: 1
   passingScore: 15
   audio_source: {fileID: 0}
   flappy_score_sound: {fileID: 0}
   flappy_pop_sound: {fileID: 0}
+  Bubble: {fileID: 1163775789}
 --- !u!4 &187837821
 Transform:
   m_ObjectHideFlags: 0
@@ -948,6 +949,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -2.679, y: 0, z: 0}
+--- !u!1 &1163775789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2252546687261600392, guid: eea7b8b54649eac45809af69b8750ad7, type: 3}
+  m_PrefabInstance: {fileID: 76740808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1183221226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 365151108007643285, guid: c662dc2c994935a47a5585057d865993, type: 3}
+  m_PrefabInstance: {fileID: 854844729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1394913539
 PrefabInstance:
   m_ObjectHideFlags: 0
