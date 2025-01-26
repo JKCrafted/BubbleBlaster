@@ -11,7 +11,7 @@ public class SetGunPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.parent.GetChild(0).forward);
+        //Debug.Log(transform.parent.GetChild(0).forward);
         Vector3 newPosition = transform.parent.GetChild(0).position + transform.parent.GetChild(0).forward; 
         transform.position = newPosition;
         Quaternion newRotation = transform.parent.localRotation;
